@@ -1,5 +1,9 @@
 # sass.cr
 
+[![Build Status](https://travis-ci.org/straight-shoota/sass.cr.svg?branch=master)](https://travis-ci.org/straight-shoota/sass.cr)
+[![Dependency Status](https://shards.rocks/badge/github/straight-shoota/crinja/status.svg)](https://shards.rocks/github/straight-shoota/crinja)
+[![devDependency Status](https://shards.rocks/badge/github/straight-shoota/crinja/dev_status.svg)](https://shards.rocks/github/straight-shoota/crinja)
+
 **sass.cr** provides a SASS/SCSS to CSS compiler for [Crystal](https://crystal-lang.org) through bindings to [`libsass`](https://github.com/sass/libsass/).
 
 ## Installation
