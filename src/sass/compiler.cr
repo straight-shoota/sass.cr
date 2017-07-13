@@ -72,14 +72,22 @@ struct Sass::Compiler
 
   # Compiles a SASS/SCSS string to CSS.
   def compile(string)
-    data_context = LibSass.sass_make_data_context(string)
+    # sass2scss converter in libsass frees the input string, so we need to create a new pointer
+    malloc_string = LibC.strdup(string)
+    data_context = LibSass.sass_make_data_context(malloc_string)
+
     context = LibSass.sass_data_context_get_context(data_context)
 
     options = LibSass.sass_data_context_get_options(data_context)
     set_options options
     LibSass.sass_data_context_set_options(data_context, options)
 
-    run_compiler context, LibSass.sass_make_data_compiler(data_context)
+    result = run_compiler context, LibSass.sass_make_data_compiler(data_context)
+
+    # if is_indented_syntax_src the parser frees the memory itself, otherwise we need to
+    LibC.free(malloc_string) unless is_indented_syntax_src
+
+    result
   ensure
     LibSass.sass_delete_data_context(data_context) if data_context
   end
@@ -111,7 +119,6 @@ struct Sass::Compiler
   private def run_compiler(context, compiler)
     LibSass.sass_compiler_parse(compiler)
     LibSass.sass_compiler_execute(compiler)
-    # LibSass.sass_delete_compiler(compiler)
 
     compile_status = LibSass.sass_context_get_error_status(context)
 
@@ -122,6 +129,9 @@ struct Sass::Compiler
     end
 
     String.new LibSass.sass_context_get_output_string(context)
+  ensure
+    # For some reason freeing the compiler results in invalid memory access. Seemslike it is reused.
+    # LibSass.sass_delete_compiler(compiler)
   end
 
   private def create_options
@@ -137,4 +147,8 @@ struct Sass::Compiler
     end
     {% end %}
   end
+end
+
+lib LibC
+  fun strdup(source : Char*) : Char*
 end
