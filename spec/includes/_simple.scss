@@ -1,0 +1,5 @@
+@for $i from 1 to 3 {
+  h#{$i} {
+    font-size: #{(7 - $i) * 2}px;
+  }
+}
