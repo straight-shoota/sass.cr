@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/straight-shoota/sass.cr">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/doc.js"></script>
+  <title>README - github.com/straight-shoota/sass.cr</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li class="current"><a href="index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent " data-id="github.com/straight-shoota/sass.cr/Sass" data-name="sass">
+      <a href="Sass.html">Sass</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/straight-shoota/sass.cr/Sass/Compiler" data-name="sass::compiler">
+      <a href="Sass/Compiler.html">Compiler</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/straight-shoota/sass.cr/Sass/CompilerError" data-name="sass::compilererror">
+      <a href="Sass/CompilerError.html">CompilerError</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/straight-shoota/sass.cr/Sass/OutputStyle" data-name="sass::outputstyle">
+      <a href="Sass/OutputStyle.html">OutputStyle</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1>sass.cr</h1>
+
+<p><a href="https://travis-ci.org/straight-shoota/sass.cr" target="_blank"><img src="https://travis-ci.org/straight-shoota/sass.cr.svg?branch=master" alt="Build Status"/></a>
+<a href="https://shards.rocks/github/straight-shoota/crinja" target="_blank"><img src="https://shards.rocks/badge/github/straight-shoota/crinja/status.svg" alt="Dependency Status"/></a>
+<a href="https://shards.rocks/github/straight-shoota/crinja" target="_blank"><img src="https://shards.rocks/badge/github/straight-shoota/crinja/dev_status.svg" alt="devDependency Status"/></a></p>
+
+<p><strong>sass.cr</strong> provides a SASS/SCSS to CSS compiler for <a href="https://crystal-lang.org" target="_blank">Crystal</a> through bindings to <a href="https://github.com/sass/libsass/" target="_blank"><code>libsass</code></a>.</p>
+
+<h2>Installation</h2>
+
+<p>Add this to your application's <code>shard.yml</code>:</p>
+
+<pre><code class='language-yaml'>dependencies:
+  sass:
+    github: straight-shoota/sass.cr</code></pre>
+
+<h3>Building <code>libsass</code></h3>
+
+<p>There is currently no binary distribution of <code>libsass</code>, so you need to build it yourself (see <a href="https://github.com/sass/libsass/blob/master/docs/build.md" target="_blank">Building instructions for <code>libsass</code></a>). The following commands download the source code from the Github repository and build a dynamic library:</p>
+
+<pre><code class='language-bash'>export SASS_LIBSASS_PATH=/usr/local/lib/libsass
+git clone https://github.com/sass/libsass.git "$SASS_LIBSASS_PATH" --branch="3.5.0.beta.3"
+BUILD="shared" make -C "$SASS_LIBSASS_PATH" -j5
+sudo PREFIX="/usr/local" make  -C "$SASS_LIBSASS_PATH" install
+sudo cp "${SASS_LIBSASS_PATH}/lib/libsass.so" /usr/local/lib
+sudo ldconfig</code></pre>
+
+<p>These bindings have been tested with version <code>3.4.5</code> and <code>3.5.0.beta.3</code>.</p>
+
+<h2>Usage</h2>
+
+<pre><code class='language-crystal'><span class="k">require</span> <span class="s">&quot;sass&quot;</span>
+
+<span class="c"># Compile a SASS/SCSS file:</span>
+css <span class="o">=</span> <span class="t">Sass</span>.compile_file(<span class="s">&quot;application.scss&quot;</span>)
+<span class="c"># Compile a SASS/SCSS file with options:</span>
+css <span class="o">=</span> <span class="t">Sass</span>.compile_file(<span class="s">&quot;application.sass&quot;</span>, include_path: <span class="s">&quot;incluldes&quot;</span>)
+<span class="c"># Compile a SASS/SCSS string:</span>
+css <span class="o">=</span> <span class="t">Sass</span>.compile(<span class="s">&quot;body &#123; div &#123; color: red; &#125; &#125;&quot;</span>)
+<span class="c"># Re-use compiler with options:</span>
+compiler <span class="o">=</span> <span class="t">Sass</span><span class="t">::</span><span class="t">Compiler</span>.<span class="k">new</span>(include_path: <span class="s">&quot;incluldes&quot;</span>, precision: <span class="n">4</span>)
+compiler.include_path += <span class="s">&quot;:other_includes&quot;</span>
+css_application <span class="o">=</span> compiler.compile_file(<span class="s">&quot;application.scss&quot;</span>)
+css_layout <span class="o">=</span> compiler.compile(<span class="s">&#37;&#40;&#64;import &quot;layout&quot;;&#41;</span>)</code></pre>
+
+<h2>Contributing</h2>
+
+<ol><li>Fork it ( https://github.com/straight-shoota/sass.cr/fork )</li><li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li><li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li><li>Push to the branch (<code>git push origin my-new-feature</code>)</li><li>Create a new Pull Request</li></ol>
+
+<h2>Contributors</h2>
+
+<ul><li><a href="https://github.com/straight-shoota" target="_blank">Johannes Müller</a> - creator, maintainer</li></ul>
+</div>
+</body>
+</html>
