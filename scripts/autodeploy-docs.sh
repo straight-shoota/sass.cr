@@ -62,11 +62,14 @@ git rm -rf "${TARGET_PATH}" --ignore-unmatch --quiet
 
 mkdir -p "${TARGET_PATH}"
 rsync -a "${GENERATED_DOCS_DIR}/" "${TARGET_PATH}"
+cp "${GENERATED_DOCS_DIR}/README.md" "${WORKDIR}"
 
 git add -f .
 
-if [ "$CI" = "true" ]; then
+if [ "$CI" = true ]; then
   BUILD_NOTICE=" on successful travis build $TRAVIS_BUILD_NUMBER"
+else
+  git status
 fi
 LOCAL_GIT_CONF=""
 if [ "$GIT_COMMITTER_NAME" != "" ]; then
