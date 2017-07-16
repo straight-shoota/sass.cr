@@ -1,5 +1,8 @@
 language: crystal
 
+before_install:
+- scripts/install_libsass_ci.sh
+
 after_success:
 - scripts/autodeploy-docs.sh
 
