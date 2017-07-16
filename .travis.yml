@@ -1,12 +1,20 @@
 language: crystal
 
-before_install:
-- scripts/install_libsass_ci.sh
-
-after_success:
-- scripts/autodeploy-docs.sh
-
 env:
   global:
     GIT_COMMITTER_NAME: travis-ci
     GIT_COMMITTER_EMAIL: travis@travis-ci.org
+    LIBSASS_VERSION: 3.5.0.beta.3
+    LOCAL_LD_PATH: ${TRAVIS_BUILD_DIR}/dynlib
+
+cache:
+  directories:
+  - ${LOCAL_LD_PATH}
+
+before_install:
+- scripts/install_libsass_ci.sh
+
+script: LIBRARY_PATH="${LOCAL_LD_PATH}/lib" LD_LIBRARY_PATH="${LOCAL_LD_PATH}/lib" crystal spec
+
+after_success:
+- scripts/autodeploy-docs.sh
