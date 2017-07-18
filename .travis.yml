@@ -17,4 +17,5 @@ before_install:
 script: LIBRARY_PATH="${LOCAL_LD_PATH}/lib" LD_LIBRARY_PATH="${LOCAL_LD_PATH}/lib" crystal spec
 
 after_success:
-- scripts/autodeploy-docs.sh
+- scripts/generate-docs.sh
+- curl https://raw.githubusercontent.com/straight-shoota/autodeploy-docs/master/autodeploy-docs.sh | bash
