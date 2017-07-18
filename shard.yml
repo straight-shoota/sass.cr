@@ -5,3 +5,9 @@ license: MIT
 
 authors:
 - Johannes Müller <straightshoota@gmail.com>
+
+description: |
+  Compile SASS/SCSS to CSS in Crystal (libsass binding)
+
+libraries:
+  libsass: "*"
