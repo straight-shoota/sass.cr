@@ -122,10 +122,8 @@ struct Sass::Compiler
 
     compile_status = LibSass.sass_context_get_error_status(context)
 
-    if compile_status != 0
-      message = String.new LibSass.sass_context_get_error_message(context)
-
-      raise CompilerError.new(message, compile_status)
+    if compile_status != LibSass::SassErrorStatus::NO_ERROR
+      raise CompilerError.new(context, compile_status)
     end
 
     String.new LibSass.sass_context_get_output_string(context)

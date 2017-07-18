@@ -16,6 +16,15 @@ lib LibSass
     COMPRESSED
   end
 
+  enum SassErrorStatus
+    NO_ERROR
+    BASE
+    BAD_ALLOC
+    INTERNAL_EXCEPTION
+    INTERNAL_STRING
+    UNKNOWN
+  end
+
   # Libsass types
   type SassOptions = Void*
   type SassContext = Void*
@@ -72,7 +81,7 @@ lib LibSass
 
   # Getters for Sass_Context values
   fun sass_context_get_output_string(ctx : SassContext*) : Char*
-  fun sass_context_get_error_status(ctx : SassContext*) : Int32
+  fun sass_context_get_error_status(ctx : SassContext*) : SassErrorStatus
   fun sass_context_get_error_json(ctx : SassContext*) : Char*
   fun sass_context_get_error_text(ctx : SassContext*) : Char*
   fun sass_context_get_error_message(ctx : SassContext*) : Char*
