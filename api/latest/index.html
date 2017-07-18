@@ -75,11 +75,12 @@
 <pre><code class='language-bash'>export SASS_LIBSASS_PATH=/usr/local/lib/libsass
 git clone https://github.com/sass/libsass.git "$SASS_LIBSASS_PATH" --branch="3.5.0.beta.3"
 BUILD="shared" make -C "$SASS_LIBSASS_PATH" -j5
-sudo PREFIX="/usr/local" make  -C "$SASS_LIBSASS_PATH" install
+sudo PREFIX="/usr/local" make -C "$SASS_LIBSASS_PATH" install
 sudo cp "${SASS_LIBSASS_PATH}/lib/libsass.so" /usr/local/lib
 sudo ldconfig</code></pre>
 
-<p>These bindings have been tested with version <code>3.4.5</code> and <code>3.5.0.beta.3</code>.</p>
+<p>You can also take a look at our <a href="scripts/install_libsass_ci.sh" target="_blank">install script</a> that builds <code>libsass</code> for travis-ci.
+These bindings have been tested with version <code>3.4.5</code> and <code>3.5.0.beta.3</code>.</p>
 
 <h2>Usage</h2>
 
