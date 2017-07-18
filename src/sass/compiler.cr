@@ -55,10 +55,13 @@ struct Sass::Compiler
     :source_map_root        => String,
   }
 
-  {% for name, option_type in OPTIONS %}
-    # Sets `libsass` option `{{name.id}}`.
-    property {{name.id}} : {{option_type}}?
-  {% end %}
+  module Options
+    {% for name, option_type in OPTIONS %}
+      # Sets `libsass` option `{{name.id}}`.
+      property {{name.id}} : {{option_type}}?
+    {% end %}
+  end
+  include Options
 
   {% begin %}
     # Creates a new compiler. All options can be assigned as named arguments.
@@ -68,10 +71,37 @@ struct Sass::Compiler
                         end
                       }})
     end
+
+    private def self.set_options(options, **option_values)
+      {% for name, option_type in OPTIONS %}
+      unless (val = option_values[:{{name.id}}]?).nil?
+        LibSass.sass_option_set_{{name.id}}(options, val)
+      end
+      {% end %}
+    end
+
+    private def merge_options({{
+                        *OPTIONS.keys.map do |option|
+                          "#{option.id} = #{option.id}".id
+                        end
+                      }})
+      {
+        {% for name, option_type in OPTIONS %}
+          {{name.id}}: {{name.id}},
+        {% end %}
+      }
+    end
   {% end %}
 
-  # Compiles a SASS/SCSS string to CSS.
-  def compile(string)
+  # Compiles a SASS/SCSS string to CSS as `String`.
+  #
+  # For available options see class description.
+  def compile(string, **options)
+    Compiler.compile(string, **merge_options(**options))
+  end
+
+  # :nodoc:
+  def self.compile(string, **option_values)
     # sass2scss converter in libsass frees the input string, so we need to create a new pointer
     malloc_string = LibC.strdup(string)
     data_context = LibSass.sass_make_data_context(malloc_string)
@@ -79,26 +109,32 @@ struct Sass::Compiler
     context = LibSass.sass_data_context_get_context(data_context)
 
     options = LibSass.sass_data_context_get_options(data_context)
-    set_options options
+    set_options options, **option_values
     LibSass.sass_data_context_set_options(data_context, options)
 
     result = run_compiler context, LibSass.sass_make_data_compiler(data_context)
 
     # if is_indented_syntax_src the parser frees the memory itself, otherwise we need to
-    LibC.free(malloc_string) unless is_indented_syntax_src
+    LibC.free(malloc_string) unless option_values[:is_indented_syntax_src]?
 
     result
   ensure
     LibSass.sass_delete_data_context(data_context) if data_context
   end
 
-  # Compiles a SASS/SCSS file to CSS.
-  def compile_file(file)
+  # Compiles a SASS/SCSS file to CSS as `String`.
+  #
+  # For available options see class description.
+  def compile_file(file, **options)
+    Compiler.compile_file(file, **merge_options(**options))
+  end
+
+  def self.compile_file(file, **option_values)
     file_context = LibSass.sass_make_file_context(file)
     context = LibSass.sass_file_context_get_context(file_context)
 
     options = LibSass.sass_file_context_get_options(file_context)
-    set_options(options)
+    set_options options, **option_values
     LibSass.sass_file_context_set_options(file_context, options)
 
     run_compiler context, LibSass.sass_make_file_compiler(file_context)
@@ -116,15 +152,13 @@ struct Sass::Compiler
   #   String.new LibSass.sass_find_include(file, create_options)
   # end
 
-  private def run_compiler(context, compiler)
+  private def self.run_compiler(context, compiler)
     LibSass.sass_compiler_parse(compiler)
     LibSass.sass_compiler_execute(compiler)
 
     compile_status = LibSass.sass_context_get_error_status(context)
 
-    if compile_status != LibSass::SassErrorStatus::NO_ERROR
-      raise CompilerError.new(context, compile_status)
-    end
+    raise_if_error context, compile_status
 
     String.new LibSass.sass_context_get_output_string(context)
   ensure
@@ -132,18 +166,26 @@ struct Sass::Compiler
     # LibSass.sass_delete_compiler(compiler)
   end
 
-  private def create_options
-    LibSass.sass_make_options.tap do |options|
-      set_options options
-    end
-  end
+  private def self.raise_if_error(context, status)
+    return if status == LibSass::SassErrorStatus::NO_ERROR
 
-  private def set_options(options)
-    {% for name, option_type in OPTIONS %}
-    unless (val = {{name.id}}).nil?
-      LibSass.sass_option_set_{{name.id}}(options, val)
+    common = {
+      message: String.new(LibSass.sass_context_get_error_message(context)),
+      status:  status,
+      text:    String.new(LibSass.sass_context_get_error_text(context)),
+    }
+
+    if status == LibSass::SassErrorStatus::BASE
+      # BASE error status (code 1) is a source code error and has a location attached
+      raise CompilerError.new(
+        **common,
+        file: String.new(LibSass.sass_context_get_error_file(context)),
+        line: LibSass.sass_context_get_error_line(context),
+        column: LibSass.sass_context_get_error_column(context),
+      )
+    else
+      raise CompilerError.new(**common)
     end
-    {% end %}
   end
 end
 

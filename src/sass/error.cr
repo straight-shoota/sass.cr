@@ -1,7 +1,9 @@
 # A `CompilerError` is raised when `libsass` compiler encounters an error.
 class Sass::CompilerError < Exception
+  alias Status = LibSass::SassErrorStatus
+
   getter message
-  getter status : LibSass::SassErrorStatus
+  getter status : Status
   getter text : String
   getter file : String?
   getter line : UInt64?
@@ -11,27 +13,8 @@ class Sass::CompilerError < Exception
     super(message, cause)
   end
 
+  # :nodoc:
   def to_s(io)
     io << "libsass compiler error (#{status}): #{message}"
-  end
-
-  def self.new(context, status)
-    common = {
-      message: String.new(LibSass.sass_context_get_error_message(context)),
-      status:  status,
-      text:    String.new(LibSass.sass_context_get_error_text(context)),
-    }
-
-    if status == LibSass::SassErrorStatus::BASE
-      # BASE error status (code 1) is a source code error and has a location attached
-      new(
-        **common,
-        file: String.new(LibSass.sass_context_get_error_file(context)),
-        line: LibSass.sass_context_get_error_line(context),
-        column: LibSass.sass_context_get_error_column(context),
-      )
-    else
-      new(**common)
-    end
   end
 end

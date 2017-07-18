@@ -10,14 +10,14 @@ module Sass
   #
   # For available options see `Scss::Compiler`.
   def self.compile(string, **options)
-    Compiler.new(**options).compile(string)
+    Compiler.compile(string, **options)
   end
 
   # Compiles a SASS/SCSS file and returns CSS as `String`.
   #
   # For available options see `Scss::Compiler`.
   def self.compile_file(file, **options)
-    Compiler.new(**options).compile_file(file)
+    Compiler.compile_file(file, **options)
   end
 end
 
