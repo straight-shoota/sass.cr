@@ -30,6 +30,7 @@ sudo cp "${SASS_LIBSASS_PATH}/lib/libsass.so" /usr/local/lib
 sudo ldconfig
 ```
 
+You can also take a look at our [install script](scripts/install_libsass_ci.sh) that builds `libsass` for travis-ci.
 These bindings have been tested with version `3.4.5` and `3.5.0.beta.3`.
 
 ## Usage

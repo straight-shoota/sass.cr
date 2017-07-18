@@ -15,11 +15,11 @@
 # * **source_map_embed**: `Bool` – embed sourceMappingUrl as data uri.
 # * **source_map_contents**: `Bool` – embed include contents in maps.
 # * **source_map_file_urls**: `Bool` – create file urls for sources.
-# * **omit_source_map_url**: `Bool` – Disable sourceMappingUrl in css output.
-# * **is_indented_syntax_src**: `Bool` – Treat source_string as sass (as opposed to scss)
+# * **omit_source_map_url**: `Bool` – Disable `sourceMappingUrl` in css output.
+# * **is_indented_syntax_src**: `Bool` – Treat `source_string` as sass (as opposed to scss)
 # * **input_path**: `String` – The input path is used for source map generating. It can be used
 #   to define something with string compilation or to overload the input file path. It is
-#   set to "stdin" for data contexts and to the input file on file contexts.
+#   set to `"stdin"` for data contexts and to the input file on file contexts.
 # * **output_path**: `String` – The output path is used for source map generating. LibSass will not
 #   write to this file, it is just used to create information in source-maps etc.
 # * **indent**: `String` – String to be used for indentation.
