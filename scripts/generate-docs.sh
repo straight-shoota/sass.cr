@@ -1,3 +1,4 @@
+#! /bin/sh
 echo -e "Clearing ./doc directory"
 rm -rf ./doc
 
