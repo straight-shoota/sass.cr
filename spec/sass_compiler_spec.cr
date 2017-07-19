@@ -11,7 +11,7 @@ private SIMPLE_CSS    = <<-'CSS'
 
   CSS
 
-describe Sass::Compiler do
+describe "Sass::Compiler" do
   describe "#compile" do
     it "compiles simple scss" do
       Sass.compile(%(body { div { color: red }})).should eq "body div {\n  color: red; }\n"
@@ -19,6 +19,41 @@ describe Sass::Compiler do
 
     it "compiles simple sass" do
       Sass.compile(%(body\n  div\n    color: red\n), is_indented_syntax_src: true).should eq "body div {\n  color: red; }\n"
+    end
+
+    it "resolves import" do
+      Sass.compile(%(@import "simple";), include_path: INCLUDES_PATH).should eq SIMPLE_CSS
+    end
+
+    it "compiles complex scss" do
+      Sass.compile(<<-'SCSS'
+        @for $i from 1 to 3 {
+          h#{$i} {
+            font-size: #{(7 - $i) * 2}px;
+          }
+        }
+        SCSS, output_style: Sass::OutputStyle::EXPANDED).should eq <<-'CSS'
+        h1 {
+          font-size: 12px;
+        }
+
+        h2 {
+          font-size: 10px;
+        }
+
+        CSS
+    end
+  end
+
+  describe "#compile_file" do
+    it "compiles simple scss file" do
+      Sass.compile_file(File.join(INCLUDES_PATH, "_simple.scss")).should eq SIMPLE_CSS
+    end
+
+    it "fails for non-existing scss file" do
+      expect_raises(Sass::CompilerError, "File to read not found or unreadable") do
+        Sass.compile_file("does_not_exist.scss")
+      end
     end
 
     it "compiles sass file (default)" do
@@ -54,40 +89,21 @@ describe Sass::Compiler do
         output_style: Sass::OutputStyle::COMPRESSED
       ).should eq File.read(MESSAGES_FILE + ".compressed.css")
     end
-
-    it "compiles complex scss" do
-      Sass::Compiler.new(output_style: LibSass::SassOutputStyle::EXPANDED).compile(<<-'SCSS'
-        @for $i from 1 to 3 {
-          h#{$i} {
-            font-size: #{(7 - $i) * 2}px;
-          }
-        }
-        SCSS).should eq <<-'CSS'
-        h1 {
-          font-size: 12px;
-        }
-
-        h2 {
-          font-size: 10px;
-        }
-
-        CSS
-    end
-
-    it "resolves import" do
-      Sass.compile(%(@import "simple";), include_path: INCLUDES_PATH).should eq SIMPLE_CSS
-    end
   end
 
-  describe "#compile_file" do
-    it "compiles simple scss file" do
-      Sass.compile_file(File.join(INCLUDES_PATH, "_simple.scss")).should eq SIMPLE_CSS
+  describe "options" do
+    it "mixes compiler and call options" do
+      Sass::Compiler.new(precision: 2).compile(
+        %(html { font-size: \#{12.123123}pt; }),
+        output_style: Sass::OutputStyle::COMPACT
+      ).should eq %(html { font-size: 12.12pt; }\n)
     end
 
-    it "fails for non-existing scss file" do
-      expect_raises(Sass::CompilerError, "File to read not found or unreadable") do
-        Sass.compile_file("does_not_exist.scss")
-      end
+    it "call options overwrite compiler options" do
+      Sass::Compiler.new(precision: 2).compile(
+        %(html { font-size: \#{12.123123}pt; }),
+        precision: 4, output_style: Sass::OutputStyle::COMPACT
+      ).should eq %(html { font-size: 12.1231pt; }\n)
     end
   end
 
