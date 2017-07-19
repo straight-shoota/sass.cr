@@ -7,6 +7,7 @@
 **sass.cr** provides a SASS/SCSS to CSS compiler for [Crystal](https://crystal-lang.org) through bindings to [`libsass`](https://github.com/sass/libsass/).
 
 **[API Documentation](https://straight-shoota.github.io/sass.cr/api/latest/)**
+**[Github Repo](https://github.com/straight-shoota/sass.cr)**
 
 ## Installation
 

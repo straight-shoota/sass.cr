@@ -17,9 +17,6 @@ describe Sass::Compiler do
       Sass.compile(%(body { div { color: red }})).should eq "body div {\n  color: red; }\n"
     end
 
-    # TODO: This fails with (at LibSass.sass_compiler_parse):
-    # *** Error in `/home/jomue/.cache/crystal/crystal-run-spec.tmp': munmap_chunk(): invalid pointer: 0x0000000000541d5c ***
-    # Program received and didn't handle signal IOT (6)
     it "compiles simple sass" do
       Sass.compile(%(body\n  div\n    color: red\n), is_indented_syntax_src: true).should eq "body div {\n  color: red; }\n"
     end
