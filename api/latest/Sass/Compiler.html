@@ -129,7 +129,7 @@ for further details.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/straight-shoota/sass.cr/blob/2e7f4c5f2f771827a7b0cc7fa8c59a8ab53fe324/src/sass/compiler.cr#L37" target="_blank">sass/compiler.cr</a>
+      <a href="https://github.com/straight-shoota/sass.cr/blob/f50029020107b9c77d051258aac393540d3229f6/src/sass/compiler.cr#L37" target="_blank">sass/compiler.cr</a>
     
     <br/>
   
@@ -152,22 +152,32 @@ for further details.</p>
 
 
 
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#compile_file%28file%2C%2A%2Aoption_values%29-class-method" class="signature"><strong>.compile_file</strong>(file, **option_values)</a>
+        
+      </li>
+    
+  </ul>
+
 
 
   <h2>Instance Method Summary</h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#compile%28string%29-instance-method" class="signature"><strong>#compile</strong>(string)</a>
+        <a href="#compile%28string%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#compile</strong>(string, **options)</a>
         
-          <div class="summary"><p>Compiles a SASS/SCSS string to CSS.</p></div>
+          <div class="summary"><p>Compiles a SASS/SCSS string to CSS as <code>String</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#compile_file%28file%29-instance-method" class="signature"><strong>#compile_file</strong>(file)</a>
+        <a href="#compile_file%28file%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#compile_file</strong>(file, **options)</a>
         
-          <div class="summary"><p>Compiles a SASS/SCSS file to CSS.</p></div>
+          <div class="summary"><p>Compiles a SASS/SCSS file to CSS as <code>String</code>.</p></div>
         
       </li>
     
@@ -401,50 +411,73 @@ for further details.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/straight-shoota/sass.cr/blob/2e7f4c5f2f771827a7b0cc7fa8c59a8ab53fe324/src/sass/compiler.cr#L66" target="_blank">View source</a>]
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/f50029020107b9c77d051258aac393540d3229f6/src/sass/compiler.cr#L66" target="_blank">View source</a>]
         
       </div>
     </div>
   
 
 
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="compile_file&#40;file,**option_values&#41;-class-method">
+      <div class="signature">
+        
+        def self.<strong>compile_file</strong>(file, **option_values)
+
+        <a class="method-permalink" href="#compile_file%28file%2C%2A%2Aoption_values%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/f50029020107b9c77d051258aac393540d3229f6/src/sass/compiler.cr#L132" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
 
 
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="compile&#40;string&#41;-instance-method">
+    <div class="entry-detail" id="compile&#40;string,**options&#41;-instance-method">
       <div class="signature">
         
-        def <strong>compile</strong>(string)
+        def <strong>compile</strong>(string, **options)
 
-        <a class="method-permalink" href="#compile%28string%29-instance-method">#</a>
+        <a class="method-permalink" href="#compile%28string%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Compiles a SASS/SCSS string to CSS.</p></div>
+        <div class="doc"><p>Compiles a SASS/SCSS string to CSS as <code>String</code>.</p>
+
+<p>For available options see class description.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/straight-shoota/sass.cr/blob/2e7f4c5f2f771827a7b0cc7fa8c59a8ab53fe324/src/sass/compiler.cr#L77" target="_blank">View source</a>]
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/f50029020107b9c77d051258aac393540d3229f6/src/sass/compiler.cr#L99" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="compile_file&#40;file&#41;-instance-method">
+    <div class="entry-detail" id="compile_file&#40;file,**options&#41;-instance-method">
       <div class="signature">
         
-        def <strong>compile_file</strong>(file)
+        def <strong>compile_file</strong>(file, **options)
 
-        <a class="method-permalink" href="#compile_file%28file%29-instance-method">#</a>
+        <a class="method-permalink" href="#compile_file%28file%2C%2A%2Aoptions%29-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Compiles a SASS/SCSS file to CSS.</p></div>
+        <div class="doc"><p>Compiles a SASS/SCSS file to CSS as <code>String</code>.</p>
+
+<p>For available options see class description.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/straight-shoota/sass.cr/blob/2e7f4c5f2f771827a7b0cc7fa8c59a8ab53fe324/src/sass/compiler.cr#L99" target="_blank">View source</a>]
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/f50029020107b9c77d051258aac393540d3229f6/src/sass/compiler.cr#L128" target="_blank">View source</a>]
         
       </div>
     </div>
