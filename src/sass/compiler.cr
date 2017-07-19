@@ -129,6 +129,7 @@ struct Sass::Compiler
     Compiler.compile_file(file, **merge_options(**options))
   end
 
+  # :nodoc:
   def self.compile_file(file, **option_values)
     file_context = LibSass.sass_make_file_context(file)
     context = LibSass.sass_file_context_get_context(file_context)
