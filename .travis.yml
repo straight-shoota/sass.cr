@@ -11,10 +11,7 @@ cache:
   directories:
   - ${LOCAL_LD_PATH}
 
-before_install:
-- scripts/install_libsass_ci.sh
-
-script: LIBRARY_PATH="${LOCAL_LD_PATH}/lib" LD_LIBRARY_PATH="${LOCAL_LD_PATH}/lib" crystal spec
+script: make spec
 
 after_success:
 - scripts/generate-docs.sh
