@@ -75,7 +75,7 @@ struct Sass::Compiler
     private def self.set_options(options, **option_values)
       {% for name, option_type in OPTIONS %}
       unless (val = option_values[:{{name.id}}]?).nil?
-        LibSass.sass_option_set_{{name.id}}(options, val)
+        LibSass.option_set_{{name.id}}(options, val)
       end
       {% end %}
     end
@@ -104,22 +104,22 @@ struct Sass::Compiler
   def self.compile(string, **option_values)
     # sass2scss converter in libsass frees the input string, so we need to create a new pointer
     malloc_string = LibC.strdup(string)
-    data_context = LibSass.sass_make_data_context(malloc_string)
+    data_context = LibSass.make_data_context(malloc_string)
 
-    context = LibSass.sass_data_context_get_context(data_context)
+    context = LibSass.data_context_get_context(data_context)
 
-    options = LibSass.sass_data_context_get_options(data_context)
+    options = LibSass.data_context_get_options(data_context)
     set_options options, **option_values
-    LibSass.sass_data_context_set_options(data_context, options)
+    LibSass.data_context_set_options(data_context, options)
 
-    result = run_compiler context, LibSass.sass_make_data_compiler(data_context)
+    result = run_compiler context, LibSass.make_data_compiler(data_context)
 
     # if is_indented_syntax_src the parser frees the memory itself, otherwise we need to
     LibC.free(malloc_string) unless option_values[:is_indented_syntax_src]?
 
     result
   ensure
-    LibSass.sass_delete_data_context(data_context) if data_context
+    LibSass.delete_data_context(data_context) if data_context
   end
 
   # Compiles a SASS/SCSS file to CSS as `String`.
@@ -131,58 +131,58 @@ struct Sass::Compiler
 
   # :nodoc:
   def self.compile_file(file, **option_values)
-    file_context = LibSass.sass_make_file_context(file)
-    context = LibSass.sass_file_context_get_context(file_context)
+    file_context = LibSass.make_file_context(file)
+    context = LibSass.file_context_get_context(file_context)
 
-    options = LibSass.sass_file_context_get_options(file_context)
+    options = LibSass.file_context_get_options(file_context)
     set_options options, **option_values
-    LibSass.sass_file_context_set_options(file_context, options)
+    LibSass.file_context_set_options(file_context, options)
 
-    run_compiler context, LibSass.sass_make_file_compiler(file_context)
+    run_compiler context, LibSass.make_file_compiler(file_context)
   ensure
-    LibSass.sass_delete_file_context(file_context) if file_context
+    LibSass.delete_file_context(file_context) if file_context
   end
 
   # Resolves a file in the given `include_path` via exact file name match.
   # def find_file(file)
-  #   String.new LibSass.sass_find_file(file, create_options)
+  #   String.new LibSass.find_file(file, create_options)
   # end
 
   # Resolves a file in the given `include_path` via include file matching.
   # def find_include(file)
-  #   String.new LibSass.sass_find_include(file, create_options)
+  #   String.new LibSass.find_include(file, create_options)
   # end
 
   private def self.run_compiler(context, compiler)
-    LibSass.sass_compiler_parse(compiler)
-    LibSass.sass_compiler_execute(compiler)
+    LibSass.compiler_parse(compiler)
+    LibSass.compiler_execute(compiler)
 
-    compile_status = LibSass.sass_context_get_error_status(context)
+    compile_status = LibSass.context_get_error_status(context)
 
     raise_if_error context, compile_status
 
-    String.new LibSass.sass_context_get_output_string(context)
+    String.new LibSass.context_get_output_string(context)
   ensure
     # For some reason freeing the compiler results in invalid memory access. Seemslike it is reused.
-    # LibSass.sass_delete_compiler(compiler)
+    # LibSass.delete_compiler(compiler)
   end
 
   private def self.raise_if_error(context, status)
     return if status == LibSass::SassErrorStatus::NO_ERROR
 
     common = {
-      message: String.new(LibSass.sass_context_get_error_message(context)),
+      message: String.new(LibSass.context_get_error_message(context)),
       status:  status,
-      text:    String.new(LibSass.sass_context_get_error_text(context)),
+      text:    String.new(LibSass.context_get_error_text(context)),
     }
 
     if status == LibSass::SassErrorStatus::BASE
       # BASE error status (code 1) is a source code error and has a location attached
       raise CompilerError.new(
         **common,
-        file: String.new(LibSass.sass_context_get_error_file(context)),
-        line: LibSass.sass_context_get_error_line(context),
-        column: LibSass.sass_context_get_error_column(context),
+        file: String.new(LibSass.context_get_error_file(context)),
+        line: LibSass.context_get_error_line(context),
+        column: LibSass.context_get_error_column(context),
       )
     else
       raise CompilerError.new(**common)
