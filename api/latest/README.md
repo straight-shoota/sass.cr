@@ -20,18 +20,11 @@ dependencies:
 ```
 
 ### Building `libsass`
-There is currently no binary distribution of `libsass`, so you need to build it yourself (see [Building instructions for `libsass`](https://github.com/sass/libsass/blob/master/docs/build.md)). The following commands download the source code from the Github repository and build a dynamic library:
+There is currently no binary distribution of `libsass`, so you need to build it yourself (see [Building instructions for `libsass`](https://github.com/sass/libsass/blob/master/docs/build.md)).
 
-```bash
-export SASS_LIBSASS_PATH=/usr/local/lib/libsass
-git clone https://github.com/sass/libsass.git "$SASS_LIBSASS_PATH" --branch="3.5.0.beta.3"
-BUILD="shared" make -C "$SASS_LIBSASS_PATH" -j5
-sudo PREFIX="/usr/local" make -C "$SASS_LIBSASS_PATH" install
-sudo cp "${SASS_LIBSASS_PATH}/lib/libsass.so" /usr/local/lib
-sudo ldconfig
-```
+The [Makefile](Makefile) contains a target `install-libsass` to install `libsass` in a global path (usually `/usr/local/lib`).
+You can also run `make dep` to install `libsass` in a local path specified by `$LOCAL_LD_PATH` (by default this is `./dynlib`).
 
-You can also take a look at our [install script](scripts/install_libsass_ci.sh) that builds `libsass` for travis-ci.
 These bindings have been tested with version `3.4.5` and `3.5.0.beta.3`.
 
 ## Usage
