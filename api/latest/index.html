@@ -78,7 +78,7 @@
 
 <p><strong>sass.cr</strong> provides a SASS/SCSS to CSS compiler for <a href="https://crystal-lang.org" target="_blank">Crystal</a> through bindings to <a href="https://github.com/sass/libsass/" target="_blank"><code>libsass</code></a>.</p>
 
-<p><strong><a href="https://straight-shoota.github.io/sass.cr/api/latest/" target="_blank">API Documentation</a></strong>
+<p><strong><a href="https://straight-shoota.github.io/sass.cr/api/latest/" target="_blank">API Documentation</a></strong> ·
 <strong><a href="https://github.com/straight-shoota/sass.cr" target="_blank">Github Repo</a></strong></p>
 
 <h2>Installation</h2>
@@ -93,10 +93,10 @@
 
 <p>There is currently no binary distribution of <code>libsass</code>, so you need to build it yourself (see <a href="https://github.com/sass/libsass/blob/master/docs/build.md" target="_blank">Building instructions for <code>libsass</code></a>).</p>
 
-<p>The <a href="Makefile" target="_blank">Makefile</a> contains a target <code>install-libsass</code> to install <code>libsass</code> in a global path (usually <code>/usr/local/lib</code>).
+<p>The included <a href="Makefile" target="_blank">Makefile</a> contains a target <code>install-libsass</code> to install <code>libsass</code> in a global path (usually <code>/usr/local/lib</code>).
 You can also run <code>make dep</code> to install <code>libsass</code> in a local path specified by <code>$LOCAL_LD_PATH</code> (by default this is <code>./dynlib</code>).</p>
 
-<p>These bindings have been tested with version <code>3.4.5</code> and <code>3.5.0.beta.3</code>.</p>
+<p>These bindings have been tested with version <code>3.4.5</code> and <code>3.5.0.beta.3</code> of <code>libsass</code>.</p>
 
 <h2>Usage</h2>
 
@@ -104,10 +104,13 @@ You can also run <code>make dep</code> to install <code>libsass</code> in a loca
 
 <span class="c"># Compile a SASS/SCSS file:</span>
 css <span class="o">=</span> <span class="t">Sass</span>.compile_file(<span class="s">&quot;application.scss&quot;</span>)
+
 <span class="c"># Compile a SASS/SCSS file with options:</span>
 css <span class="o">=</span> <span class="t">Sass</span>.compile_file(<span class="s">&quot;application.sass&quot;</span>, include_path: <span class="s">&quot;incluldes&quot;</span>)
+
 <span class="c"># Compile a SASS/SCSS string:</span>
 css <span class="o">=</span> <span class="t">Sass</span>.compile(<span class="s">&quot;body &#123; div &#123; color: red; &#125; &#125;&quot;</span>)
+
 <span class="c"># Re-use compiler with options:</span>
 compiler <span class="o">=</span> <span class="t">Sass</span><span class="t">::</span><span class="t">Compiler</span>.<span class="k">new</span>(include_path: <span class="s">&quot;incluldes&quot;</span>, precision: <span class="n">4</span>)
 compiler.include_path += <span class="s">&quot;:other_includes&quot;</span>

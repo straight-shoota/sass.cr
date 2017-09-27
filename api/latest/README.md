@@ -6,7 +6,7 @@
 
 **sass.cr** provides a SASS/SCSS to CSS compiler for [Crystal](https://crystal-lang.org) through bindings to [`libsass`](https://github.com/sass/libsass/).
 
-**[API Documentation](https://straight-shoota.github.io/sass.cr/api/latest/)**
+**[API Documentation](https://straight-shoota.github.io/sass.cr/api/latest/)** ·
 **[Github Repo](https://github.com/straight-shoota/sass.cr)**
 
 ## Installation
@@ -22,10 +22,10 @@ dependencies:
 ### Building `libsass`
 There is currently no binary distribution of `libsass`, so you need to build it yourself (see [Building instructions for `libsass`](https://github.com/sass/libsass/blob/master/docs/build.md)).
 
-The [Makefile](Makefile) contains a target `install-libsass` to install `libsass` in a global path (usually `/usr/local/lib`).
+The included [Makefile](Makefile) contains a target `install-libsass` to install `libsass` in a global path (usually `/usr/local/lib`).
 You can also run `make dep` to install `libsass` in a local path specified by `$LOCAL_LD_PATH` (by default this is `./dynlib`).
 
-These bindings have been tested with version `3.4.5` and `3.5.0.beta.3`.
+These bindings have been tested with version `3.4.5` and `3.5.0.beta.3` of `libsass`.
 
 ## Usage
 
@@ -34,10 +34,13 @@ require "sass"
 
 # Compile a SASS/SCSS file:
 css = Sass.compile_file("application.scss")
+
 # Compile a SASS/SCSS file with options:
 css = Sass.compile_file("application.sass", include_path: "incluldes")
+
 # Compile a SASS/SCSS string:
 css = Sass.compile("body { div { color: red; } }")
+
 # Re-use compiler with options:
 compiler = Sass::Compiler.new(include_path: "incluldes", precision: 4)
 compiler.include_path += ":other_includes"
