@@ -9,11 +9,11 @@ class Sass::CompilerError < Exception
   getter line : UInt64?
   getter column : UInt64?
 
+  # :nodoc:
   def initialize(message : String, @status, @text, @file = nil, @line = nil, @column = nil, cause = nil)
     super(message, cause)
   end
 
-  # :nodoc:
   def to_s(io)
     io << "libsass compiler error (#{status}): #{message}"
   end

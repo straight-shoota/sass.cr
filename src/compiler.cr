@@ -36,27 +36,27 @@
 # for further details.
 struct Sass::Compiler
   # :nodoc:
-  OPTIONS = {
-    :precision              => Int32,
-    :output_style           => OutputStyle,
-    :source_comments        => Bool,
-    :source_map_embed       => Bool,
-    :source_map_contents    => Bool,
-    :source_map_file_urls   => Bool,
-    :omit_source_map_url    => Bool,
-    :is_indented_syntax_src => Bool,
-    :indent                 => String,
-    :linefeed               => String,
-    :input_path             => String,
-    :output_path            => String,
-    :plugin_path            => String,
-    :include_path           => String,
-    :source_map_file        => String,
-    :source_map_root        => String,
+  OPTION_TYPES = {
+    precision:               Int32,
+    output_style:            OutputStyle,
+    source_comments:         Bool,
+    source_map_embed:        Bool,
+    source_map_contents:     Bool,
+    source_map_file_urls:    Bool,
+    omit_source_map_url:     Bool,
+    is_indented_syntax_src:  Bool,
+    indent:                  String,
+    linefeed:                String,
+    input_path:              String,
+    output_path:             String,
+    plugin_path:             String,
+    include_path:            String,
+    source_map_file:         String,
+    source_map_root:         String,
   }
 
   module Options
-    {% for name, option_type in OPTIONS %}
+    {% for name, option_type in OPTION_TYPES %}
       # Sets `libsass` option `{{name.id}}`.
       property {{name.id}} : {{option_type}}?
     {% end %}
@@ -66,38 +66,35 @@ struct Sass::Compiler
   {% begin %}
     # Creates a new compiler. All options can be assigned as named arguments.
     def initialize(*, {{
-                        *OPTIONS.keys.map do |option|
+                        *OPTION_TYPES.keys.map do |option|
                           "@#{option.id} = nil".id
                         end
                       }})
     end
 
     private def self.set_options(options, **option_values)
-      {% for name, option_type in OPTIONS %}
+      {% for name, option_type in OPTION_TYPES %}
       unless (val = option_values[:{{name.id}}]?).nil?
         LibSass.option_set_{{name.id}}(options, val)
       end
       {% end %}
     end
 
-    private def merge_options({{
-                        *OPTIONS.keys.map do |option|
-                          "#{option.id} = #{option.id}".id
-                        end
-                      }})
+    def config
       {
-        {% for name, option_type in OPTIONS %}
-          {{name.id}}: {{name.id}},
+        {% for name, option_type in OPTION_TYPES %}
+          {{ name.id }}: {{ name.id }},
         {% end %}
       }
     end
   {% end %}
 
+
   # Compiles a SASS/SCSS string to CSS as `String`.
   #
   # For available options see class description.
   def compile(string, **options)
-    Compiler.compile(string, **merge_options(**options))
+    Compiler.compile(string, **config.merge(**options))
   end
 
   # :nodoc:
@@ -126,7 +123,7 @@ struct Sass::Compiler
   #
   # For available options see class description.
   def compile_file(file, **options)
-    Compiler.compile_file(file, **merge_options(**options))
+    Compiler.compile_file(file, **config.merge(**options))
   end
 
   # :nodoc:
