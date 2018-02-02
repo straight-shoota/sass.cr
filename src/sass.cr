@@ -8,14 +8,14 @@ module Sass
     String.new(LibSass.libsass_version)
   end
 
-  # Compiles a SASS/SCSS string and returns CSS as `String`.
+  # Compiles a Sass/SCSS string and returns CSS as `String`.
   #
   # For available options see `Sass::Compiler`.
   def self.compile(string, **options)
     Compiler.compile(string, **options)
   end
 
-  # Compiles a SASS/SCSS file and returns CSS as `String`.
+  # Compiles a Sass/SCSS file and returns CSS as `String`.
   #
   # For available options see `Sass::Compiler`.
   def self.compile_file(file, **options)

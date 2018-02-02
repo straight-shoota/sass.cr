@@ -4,10 +4,10 @@
 [![Dependency Status](https://shards.rocks/badge/github/straight-shoota/crinja/status.svg)](https://shards.rocks/github/straight-shoota/crinja)
 [![devDependency Status](https://shards.rocks/badge/github/straight-shoota/crinja/dev_status.svg)](https://shards.rocks/github/straight-shoota/crinja)
 
-**sass.cr** provides a SASS/SCSS to CSS compiler for [Crystal](https://crystal-lang.org) through bindings to [`libsass`](https://github.com/sass/libsass/).
+**sass.cr** provides a Sass/SCSS to CSS compiler for [Crystal](https://crystal-lang.org) through bindings to [`libsass`](https://github.com/sass/libsass/).
 
 **[API Documentation](https://straight-shoota.github.io/sass.cr/api/latest/)** ·
-**[Github Repo](https://github.com/straight-shoota/sass.cr)**
+**[GitHub Repo](https://github.com/straight-shoota/sass.cr)**
 
 ## Installation
 
@@ -32,17 +32,17 @@ These bindings have been tested with version `3.4.5` and `3.5.0.beta.3` of `libs
 ```crystal
 require "sass"
 
-# Compile a SASS/SCSS file:
+# Compile a Sass/SCSS file:
 css = Sass.compile_file("application.scss")
 
-# Compile a SASS/SCSS file with options:
-css = Sass.compile_file("application.sass", include_path: "incluldes")
+# Compile a Sass/SCSS file with options:
+css = Sass.compile_file("application.sass", include_path: "includes")
 
-# Compile a SASS/SCSS string:
+# Compile a Sass/SCSS string:
 css = Sass.compile("body { div { color: red; } }")
 
 # Re-use compiler with options:
-compiler = Sass::Compiler.new(include_path: "incluldes", precision: 4)
+compiler = Sass::Compiler.new(include_path: "includes", precision: 4)
 compiler.include_path += ":other_includes"
 css_application = compiler.compile_file("application.scss")
 css_layout = compiler.compile(%(@import "layout";))

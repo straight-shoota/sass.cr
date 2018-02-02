@@ -1,4 +1,4 @@
-# This compiler provides a simple API to compile SASS and SCSS with `libsass`.
+# This compiler provides a simple API to compile Sass and SCSS with `libsass`.
 #
 # Example usage:
 # ```
@@ -90,7 +90,7 @@ struct Sass::Compiler
   {% end %}
 
 
-  # Compiles a SASS/SCSS string to CSS as `String`.
+  # Compiles a Sass/SCSS string to CSS as `String`.
   #
   # For available options see class description.
   def compile(string, **options)
@@ -119,7 +119,7 @@ struct Sass::Compiler
     LibSass.delete_data_context(data_context) if data_context
   end
 
-  # Compiles a SASS/SCSS file to CSS as `String`.
+  # Compiles a Sass/SCSS file to CSS as `String`.
   #
   # For available options see class description.
   def compile_file(file, **options)
@@ -160,7 +160,7 @@ struct Sass::Compiler
 
     String.new LibSass.context_get_output_string(context)
   ensure
-    # For some reason freeing the compiler results in invalid memory access. Seemslike it is reused.
+    # For some reason freeing the compiler results in invalid memory access. Seems like it is reused.
     # LibSass.delete_compiler(compiler)
   end
 
