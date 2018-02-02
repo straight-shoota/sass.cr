@@ -107,14 +107,14 @@ describe "Sass::Compiler" do
     end
   end
 
-  # TODO: find_file returns emtpy string
+  # TODO: find_file returns empty string
   pending "#find_file" do
     it "finds file" do
       Sass::Compiler.new(include_path: INCLUDES_PATH).find_file("_simple.scss").should eq File.join(INCLUDES_PATH, "_simple.scss")
     end
   end
 
-  # TODO: find_include returns emtpy string
+  # TODO: find_include returns empty string
   pending "#find_include" do
     it "finds file" do
       Sass::Compiler.new(include_path: INCLUDES_PATH).find_file("simple").should eq File.join(INCLUDES_PATH, "_simple.scss")
