@@ -120,7 +120,10 @@ struct Sass::Compiler
   # :nodoc:
   def self.compile(string, **option_values)
     # sass2scss converter in libsass frees the input string, so we need to create a new pointer
-    malloc_string = LibC.strdup(string.check_no_null_byte)
+    string.check_no_null_byte
+    malloc_string = LibC.malloc(string.bytesize + 1).as(UInt8*)
+    malloc_string.copy_from string.to_unsafe, string.bytesize
+    malloc_string[string.bytesize] = 0_u8
     data_context = LibSass.make_data_context(malloc_string)
 
     context = LibSass.data_context_get_context(data_context)
@@ -205,8 +208,4 @@ struct Sass::Compiler
       raise CompilerError.new(**common)
     end
   end
-end
-
-lib LibC
-  fun strdup(source : Char*) : Char*
 end
