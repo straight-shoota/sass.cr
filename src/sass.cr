@@ -26,3 +26,4 @@ end
 require "./lib_sass"
 require "./error"
 require "./compiler"
+require "./sass2scss"

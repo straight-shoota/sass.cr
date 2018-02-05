@@ -171,7 +171,21 @@ lib LibSass
   fun compiler_find_file = sass_compiler_find_file(path : Char*, compiler : SassCompiler*) : Char*
   fun compiler_find_include = sass_compiler_find_include(path : Char*, compiler : SassCompiler*) : Char*
 
+  @[Flags]
+  enum Sass2ScssOption
+    PRETTIFY_1,
+    PRETTIFY_2,
+    PRETTIFY_3,
+
+    FILL1,
+    FILL2,
+
+    KEEP_COMMENT,
+    STRIP_COMMENT,
+    CONVERT_COMMENT
+  end
+
   # Sass2Scss
   fun sass2scss_version : Char*
-  fun sass2scss(sass : Char*, options : Int32) : Char*
+  fun sass2scss(sass : Char*, options : Sass2ScssOption) : Char*
 end
