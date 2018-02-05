@@ -11,8 +11,6 @@ cache:
   directories:
   - ${LOCAL_LD_PATH}
 
-script: make spec
-
-after_success:
-- scripts/generate-docs.sh
-- curl https://raw.githubusercontent.com/straight-shoota/autodeploy-docs/master/autodeploy-docs.sh | bash
+script:
+- make spec
+- "if [ $TRAVIS_TEST_RESULT -eq 0 ]; then scripts/generate-docs.sh && curl https://raw.githubusercontent.com/straight-shoota/autodeploy-docs/master/autodeploy-docs.sh | bash; fi"
