@@ -57,8 +57,18 @@ struct Sass::Compiler
 
   module Options
     {% for name, option_type in OPTION_TYPES %}
+      # Gets `libsass` option `{{name.id}}`.
+      getter {{name.id}} : {{option_type}}?
+
+      {% if option_type.resolve == String %}
       # Sets `libsass` option `{{name.id}}`.
-      property {{name.id}} : {{option_type}}?
+      def {{name.id}}=(value : String?)
+        @{{name.id}} = value.try &.check_no_null_byte
+      end
+      {% else %}
+      # Sets `libsass` option `{{name.id}}`.
+      setter {{name.id}} : {{option_type}}?
+      {% end %}
     {% end %}
   end
   include Options
@@ -70,12 +80,22 @@ struct Sass::Compiler
                           "@#{option.id} = nil".id
                         end
                       }})
+      {% for name, option_type in OPTION_TYPES %}
+        {% if option_type.resolve == String %}
+          {{name}}.try &.check_no_null_byte
+        {% end %}
+      {% end %}
     end
 
     private def self.set_options(options, **option_values)
       {% for name, option_type in OPTION_TYPES %}
       unless (val = option_values[:{{name.id}}]?).nil?
-        LibSass.option_set_{{name.id}}(options, val)
+        LibSass.option_set_{{name.id}}(options,
+          {% if option_type.resolve == String %}
+            val.check_no_null_byte
+          {% else %}
+            val
+          {% end %})
       end
       {% end %}
     end
@@ -100,7 +120,7 @@ struct Sass::Compiler
   # :nodoc:
   def self.compile(string, **option_values)
     # sass2scss converter in libsass frees the input string, so we need to create a new pointer
-    malloc_string = LibC.strdup(string)
+    malloc_string = LibC.strdup(string.check_no_null_byte)
     data_context = LibSass.make_data_context(malloc_string)
 
     context = LibSass.data_context_get_context(data_context)
@@ -128,7 +148,7 @@ struct Sass::Compiler
 
   # :nodoc:
   def self.compile_file(file, **option_values)
-    file_context = LibSass.make_file_context(file)
+    file_context = LibSass.make_file_context(file.check_no_null_byte)
     context = LibSass.file_context_get_context(file_context)
 
     options = LibSass.file_context_get_options(file_context)

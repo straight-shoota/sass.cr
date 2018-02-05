@@ -43,6 +43,12 @@ describe "Sass::Compiler" do
 
         CSS
     end
+
+    it "handles null byte" do
+      expect_raises ArgumentError, "String contains null byte" do
+        Sass.compile("p { color: red; }\0p { color: blue; }")
+      end
+    end
   end
 
   describe "#compile_file" do
@@ -89,6 +95,12 @@ describe "Sass::Compiler" do
         output_style: Sass::OutputStyle::COMPRESSED
       ).should eq File.read(MESSAGES_FILE + ".compressed.css")
     end
+
+    it "handles null byte" do
+      expect_raises ArgumentError, "String contains null byte" do
+        Sass.compile_file(MESSAGES_FILE + ".sass\0")
+      end
+    end
   end
 
   describe "options" do
@@ -104,6 +116,20 @@ describe "Sass::Compiler" do
         %(html { font-size: \#{12.123123}pt; }),
         precision: 4, output_style: Sass::OutputStyle::COMPACT
       ).should eq %(html { font-size: 12.1231pt; }\n)
+    end
+
+    it "handles null byte" do
+      expect_raises ArgumentError, "String contains null byte" do
+        Sass::Compiler.new(input_path: "foo\0bar")
+      end
+      expect_raises ArgumentError, "String contains null byte" do
+        Sass::Compiler.compile("foo.sass", source_map_file: "null\0.map")
+      end
+
+      compiler = Sass::Compiler.new
+      expect_raises ArgumentError, "String contains null byte" do
+        compiler.indent = "\0"
+      end
     end
   end
 
