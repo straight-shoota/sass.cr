@@ -96,12 +96,12 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/straight-shoota/sass.cr/blob/4e5a6581a1723af7e5b5c8045f482394bfcb46bb/src/sass.cr#L1" target="_blank">sass.cr</a>
+      <a href="https://github.com/straight-shoota/sass.cr/blob/02f96816d25b3fb09ef255b2fcef053c93f22f81/src/sass.cr#L1" target="_blank">sass.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/straight-shoota/sass.cr/blob/4e5a6581a1723af7e5b5c8045f482394bfcb46bb/src/sass2scss.cr#L1" target="_blank">sass2scss.cr</a>
+      <a href="https://github.com/straight-shoota/sass.cr/blob/02f96816d25b3fb09ef255b2fcef053c93f22f81/src/sass2scss.cr#L1" target="_blank">sass2scss.cr</a>
     
     <br/>
   
@@ -149,7 +149,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#sass2scss%28content%3AString%2Cprettify%3D1%2Ccomments%3D%3Aconvert%29%3AString-class-method" class="signature"><strong>.sass2scss</strong>(content : String, prettify = <span class="n">1</span>, comments = <span class="n">:convert</span>) : String</a>
+        <a href="#sass2scss%28content%3AString%2Cprettify%3D%3Aallman_style%2Ccomments%3D%3Aconvert%29%3AString-class-method" class="signature"><strong>.sass2scss</strong>(content : String, prettify = <span class="n">:allman_style</span>, comments = <span class="n">:convert</span>) : String</a>
         
           <div class="summary"><p>Converts a <code>String</code> with Sass code into SCSS.</p></div>
         
@@ -187,7 +187,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/straight-shoota/sass.cr/blob/4e5a6581a1723af7e5b5c8045f482394bfcb46bb/src/sass.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/02f96816d25b3fb09ef255b2fcef053c93f22f81/src/sass.cr#L14" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -207,7 +207,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/straight-shoota/sass.cr/blob/4e5a6581a1723af7e5b5c8045f482394bfcb46bb/src/sass.cr#L21" target="_blank">View source</a>]
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/02f96816d25b3fb09ef255b2fcef053c93f22f81/src/sass.cr#L21" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -225,24 +225,24 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/straight-shoota/sass.cr/blob/4e5a6581a1723af7e5b5c8045f482394bfcb46bb/src/sass.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/02f96816d25b3fb09ef255b2fcef053c93f22f81/src/sass.cr#L7" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="sass2scss(content:String,prettify=1,comments=:convert):String-class-method">
+    <div class="entry-detail" id="sass2scss(content:String,prettify=:allman_style,comments=:convert):String-class-method">
       <div class="signature">
         
-        def self.<strong>sass2scss</strong>(content : String, prettify = <span class="n">1</span>, comments = <span class="n">:convert</span>) : String
+        def self.<strong>sass2scss</strong>(content : String, prettify = <span class="n">:allman_style</span>, comments = <span class="n">:convert</span>) : String
 
-        <a class="method-permalink" href="#sass2scss%28content%3AString%2Cprettify%3D1%2Ccomments%3D%3Aconvert%29%3AString-class-method">#</a>
+        <a class="method-permalink" href="#sass2scss%28content%3AString%2Cprettify%3D%3Aallman_style%2Ccomments%3D%3Aconvert%29%3AString-class-method">#</a>
       </div>
       
         <div class="doc"><p>Converts a <code>String</code> with Sass code into SCSS.</p>
 
 <p><em>prettify</em> takes the following values:</p>
 
-<ul><li><code>0</code>: Write everything on one line (<code>minimized</code>)</li><li><code>1</code>: Add lf after opening bracket (<code>lisp style</code>) <em>(default)</em></li><li><code>2</code>: Add lf after opening and before closing bracket (<code>1TBS style</code>)</li><li><code>3</code>: Add lf before/after opening and before closing (<code>allman style</code>)</li></ul>
+<ul><li><code>:minimized</code>: Write everything on one line (<code>minimized</code>)</li><li><code>:lisp_style</code>: Add lf after opening bracket (<code>lisp style</code>)</li><li><code>:otbs_style</code>: Add lf after opening and before closing bracket (<code>1TBS style</code>)</li><li><code>:allman_style</code>: Add lf before/after opening and before closing (<code>allman style</code>) <em>(default)</em></li></ul>
 
 <p><em>comments</em> takes these values:</p>
 
@@ -251,7 +251,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/straight-shoota/sass.cr/blob/4e5a6581a1723af7e5b5c8045f482394bfcb46bb/src/sass2scss.cr#L15" target="_blank">View source</a>]
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/02f96816d25b3fb09ef255b2fcef053c93f22f81/src/sass2scss.cr#L15" target="_blank">View source</a>]
         
       </div>
     </div>
