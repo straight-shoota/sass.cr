@@ -37,22 +37,22 @@
 struct Sass::Compiler
   # :nodoc:
   OPTION_TYPES = {
-    precision:               Int32,
-    output_style:            OutputStyle,
-    source_comments:         Bool,
-    source_map_embed:        Bool,
-    source_map_contents:     Bool,
-    source_map_file_urls:    Bool,
-    omit_source_map_url:     Bool,
-    is_indented_syntax_src:  Bool,
-    indent:                  String,
-    linefeed:                String,
-    input_path:              String,
-    output_path:             String,
-    plugin_path:             String,
-    include_path:            String,
-    source_map_file:         String,
-    source_map_root:         String,
+    precision:              Int32,
+    output_style:           OutputStyle,
+    source_comments:        Bool,
+    source_map_embed:       Bool,
+    source_map_contents:    Bool,
+    source_map_file_urls:   Bool,
+    omit_source_map_url:    Bool,
+    is_indented_syntax_src: Bool,
+    indent:                 String,
+    linefeed:               String,
+    input_path:             String,
+    output_path:            String,
+    plugin_path:            String,
+    include_path:           String,
+    source_map_file:        String,
+    source_map_root:        String,
   }
 
   module Options
@@ -71,6 +71,7 @@ struct Sass::Compiler
       {% end %}
     {% end %}
   end
+
   include Options
 
   {% begin %}
@@ -108,7 +109,6 @@ struct Sass::Compiler
       }
     end
   {% end %}
-
 
   # Compiles a Sass/SCSS string to CSS as `String`.
   #
