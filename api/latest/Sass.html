@@ -20,7 +20,7 @@
 
   <ul>
   
-  <li class="parent current" data-id="github.com/straight-shoota/sass.cr/Sass" data-name="sass">
+  <li class="parent open current" data-id="github.com/straight-shoota/sass.cr/Sass" data-name="sass">
       <a href="Sass.html">Sass</a>
       
         <ul>
@@ -96,12 +96,12 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/straight-shoota/sass.cr/blob/346f904ac1579b2b7652325f288c650974b39bab/src/sass.cr#L1" target="_blank">sass.cr</a>
+      <a href="https://github.com/straight-shoota/sass.cr/blob/4e5a6581a1723af7e5b5c8045f482394bfcb46bb/src/sass.cr#L1" target="_blank">sass.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/straight-shoota/sass.cr/blob/346f904ac1579b2b7652325f288c650974b39bab/src/sass/version.cr#L1" target="_blank">sass/version.cr</a>
+      <a href="https://github.com/straight-shoota/sass.cr/blob/4e5a6581a1723af7e5b5c8045f482394bfcb46bb/src/sass2scss.cr#L1" target="_blank">sass2scss.cr</a>
     
     <br/>
   
@@ -114,7 +114,7 @@
   <dl>
     
       <dt class="entry-const" id="VERSION">
-        <strong>VERSION</strong> = <code><span class="s">&quot;0.1.0&quot;</span></code>
+        <strong>VERSION</strong> = <code><span class="s">&quot;0.3.0&quot;</span></code>
       </dt>
       
     
@@ -130,14 +130,14 @@
       <li class="entry-summary">
         <a href="#compile%28string%2C%2A%2Aoptions%29-class-method" class="signature"><strong>.compile</strong>(string, **options)</a>
         
-          <div class="summary"><p>Compiles a SASS/SCSS string and returns CSS as <code>String</code>.</p></div>
+          <div class="summary"><p>Compiles a Sass/SCSS string and returns CSS as <code>String</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#compile_file%28file%2C%2A%2Aoptions%29-class-method" class="signature"><strong>.compile_file</strong>(file, **options)</a>
         
-          <div class="summary"><p>Compiles a SASS/SCSS file and returns CSS as <code>String</code>.</p></div>
+          <div class="summary"><p>Compiles a Sass/SCSS file and returns CSS as <code>String</code>.</p></div>
         
       </li>
     
@@ -145,6 +145,13 @@
         <a href="#libsass_version-class-method" class="signature"><strong>.libsass_version</strong></a>
         
           <div class="summary"><p>Returns the version of <code>libsass</code> as a <code>String</code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sass2scss%28content%3AString%2Cprettify%3D1%2Ccomments%3D%3Aconvert%29%3AString-class-method" class="signature"><strong>.sass2scss</strong>(content : String, prettify = <span class="n">1</span>, comments = <span class="n">:convert</span>) : String</a>
+        
+          <div class="summary"><p>Converts a <code>String</code> with Sass code into SCSS.</p></div>
         
       </li>
     
@@ -165,7 +172,7 @@
 
   <h2>Class Method Detail</h2>
   
-    <div class="entry-detail" id="compile&#40;string,**options&#41;-class-method">
+    <div class="entry-detail" id="compile(string,**options)-class-method">
       <div class="signature">
         
         def self.<strong>compile</strong>(string, **options)
@@ -173,19 +180,19 @@
         <a class="method-permalink" href="#compile%28string%2C%2A%2Aoptions%29-class-method">#</a>
       </div>
       
-        <div class="doc"><p>Compiles a SASS/SCSS string and returns CSS as <code>String</code>.</p>
+        <div class="doc"><p>Compiles a Sass/SCSS string and returns CSS as <code>String</code>.</p>
 
-<p>For available options see <code>Scss::Compiler</code>.</p></div>
+<p>For available options see <code><a href="Sass/Compiler.html">Sass::Compiler</a></code>.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/straight-shoota/sass.cr/blob/346f904ac1579b2b7652325f288c650974b39bab/src/sass.cr#L12" target="_blank">View source</a>]
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/4e5a6581a1723af7e5b5c8045f482394bfcb46bb/src/sass.cr#L14" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="compile_file&#40;file,**options&#41;-class-method">
+    <div class="entry-detail" id="compile_file(file,**options)-class-method">
       <div class="signature">
         
         def self.<strong>compile_file</strong>(file, **options)
@@ -193,14 +200,14 @@
         <a class="method-permalink" href="#compile_file%28file%2C%2A%2Aoptions%29-class-method">#</a>
       </div>
       
-        <div class="doc"><p>Compiles a SASS/SCSS file and returns CSS as <code>String</code>.</p>
+        <div class="doc"><p>Compiles a Sass/SCSS file and returns CSS as <code>String</code>.</p>
 
-<p>For available options see <code>Scss::Compiler</code>.</p></div>
+<p>For available options see <code><a href="Sass/Compiler.html">Sass::Compiler</a></code>.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/straight-shoota/sass.cr/blob/346f904ac1579b2b7652325f288c650974b39bab/src/sass.cr#L19" target="_blank">View source</a>]
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/4e5a6581a1723af7e5b5c8045f482394bfcb46bb/src/sass.cr#L21" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -218,7 +225,33 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/straight-shoota/sass.cr/blob/346f904ac1579b2b7652325f288c650974b39bab/src/sass.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/4e5a6581a1723af7e5b5c8045f482394bfcb46bb/src/sass.cr#L7" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sass2scss(content:String,prettify=1,comments=:convert):String-class-method">
+      <div class="signature">
+        
+        def self.<strong>sass2scss</strong>(content : String, prettify = <span class="n">1</span>, comments = <span class="n">:convert</span>) : String
+
+        <a class="method-permalink" href="#sass2scss%28content%3AString%2Cprettify%3D1%2Ccomments%3D%3Aconvert%29%3AString-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Converts a <code>String</code> with Sass code into SCSS.</p>
+
+<p><em>prettify</em> takes the following values:</p>
+
+<ul><li><code>0</code>: Write everything on one line (<code>minimized</code>)</li><li><code>1</code>: Add lf after opening bracket (<code>lisp style</code>) <em>(default)</em></li><li><code>2</code>: Add lf after opening and before closing bracket (<code>1TBS style</code>)</li><li><code>3</code>: Add lf before/after opening and before closing (<code>allman style</code>)</li></ul>
+
+<p><em>comments</em> takes these values:</p>
+
+<ul><li><code>:convert</code>: convert all comments to <code><em>/</code>and <code></em>/</code> delimiters <em>(default)</em></li><li><code>:keep</code>: keep comments</li><li><code>:strip</code>: strip all comments</li></ul></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/4e5a6581a1723af7e5b5c8045f482394bfcb46bb/src/sass2scss.cr#L15" target="_blank">View source</a>]
         
       </div>
     </div>

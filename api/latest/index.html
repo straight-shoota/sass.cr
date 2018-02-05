@@ -76,10 +76,10 @@
 <a href="https://shards.rocks/github/straight-shoota/crinja" target="_blank"><img src="https://shards.rocks/badge/github/straight-shoota/crinja/status.svg" alt="Dependency Status"/></a>
 <a href="https://shards.rocks/github/straight-shoota/crinja" target="_blank"><img src="https://shards.rocks/badge/github/straight-shoota/crinja/dev_status.svg" alt="devDependency Status"/></a></p>
 
-<p><strong>sass.cr</strong> provides a SASS/SCSS to CSS compiler for <a href="https://crystal-lang.org" target="_blank">Crystal</a> through bindings to <a href="https://github.com/sass/libsass/" target="_blank"><code>libsass</code></a>.</p>
+<p><strong>sass.cr</strong> provides a Sass/SCSS to CSS compiler for <a href="https://crystal-lang.org" target="_blank">Crystal</a> through bindings to <a href="https://github.com/sass/libsass/" target="_blank"><code>libsass</code></a>.</p>
 
 <p><strong><a href="https://straight-shoota.github.io/sass.cr/api/latest/" target="_blank">API Documentation</a></strong> ·
-<strong><a href="https://github.com/straight-shoota/sass.cr" target="_blank">Github Repo</a></strong></p>
+<strong><a href="https://github.com/straight-shoota/sass.cr" target="_blank">GitHub Repo</a></strong></p>
 
 <h2>Installation</h2>
 
@@ -102,20 +102,20 @@ You can also run <code>make dep</code> to install <code>libsass</code> in a loca
 
 <pre><code class='language-crystal'><span class="k">require</span> <span class="s">&quot;sass&quot;</span>
 
-<span class="c"># Compile a SASS/SCSS file:</span>
+<span class="c"># Compile a Sass/SCSS file:</span>
 css <span class="o">=</span> <span class="t">Sass</span>.compile_file(<span class="s">&quot;application.scss&quot;</span>)
 
-<span class="c"># Compile a SASS/SCSS file with options:</span>
-css <span class="o">=</span> <span class="t">Sass</span>.compile_file(<span class="s">&quot;application.sass&quot;</span>, include_path: <span class="s">&quot;incluldes&quot;</span>)
+<span class="c"># Compile a Sass/SCSS file with options:</span>
+css <span class="o">=</span> <span class="t">Sass</span>.compile_file(<span class="s">&quot;application.sass&quot;</span>, include_path: <span class="s">&quot;includes&quot;</span>)
 
-<span class="c"># Compile a SASS/SCSS string:</span>
-css <span class="o">=</span> <span class="t">Sass</span>.compile(<span class="s">&quot;body &#123; div &#123; color: red; &#125; &#125;&quot;</span>)
+<span class="c"># Compile a Sass/SCSS string:</span>
+css <span class="o">=</span> <span class="t">Sass</span>.compile(<span class="s">&quot;body { div { color: red; } }&quot;</span>)
 
 <span class="c"># Re-use compiler with options:</span>
-compiler <span class="o">=</span> <span class="t">Sass</span><span class="t">::</span><span class="t">Compiler</span>.<span class="k">new</span>(include_path: <span class="s">&quot;incluldes&quot;</span>, precision: <span class="n">4</span>)
+compiler <span class="o">=</span> <span class="t">Sass</span><span class="t">::</span><span class="t">Compiler</span>.<span class="k">new</span>(include_path: <span class="s">&quot;includes&quot;</span>, precision: <span class="n">4</span>)
 compiler.include_path += <span class="s">&quot;:other_includes&quot;</span>
 css_application <span class="o">=</span> compiler.compile_file(<span class="s">&quot;application.scss&quot;</span>)
-css_layout <span class="o">=</span> compiler.compile(<span class="s">&#37;&#40;&#64;import &quot;layout&quot;;&#41;</span>)</code></pre>
+css_layout <span class="o">=</span> compiler.compile(<span class="s">%(@import &quot;layout&quot;;)</span>)</code></pre>
 
 <h2>Contributing</h2>
 
