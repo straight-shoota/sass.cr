@@ -13,4 +13,5 @@ cache:
 
 script:
 - make spec
+- crystal tool format --check spec src
 - "if [ $TRAVIS_TEST_RESULT -eq 0 ]; then scripts/generate-docs.sh && curl https://raw.githubusercontent.com/straight-shoota/autodeploy-docs/master/autodeploy-docs.sh | bash; fi"
