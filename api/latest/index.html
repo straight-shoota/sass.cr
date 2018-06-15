@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.25.0">
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "";
+</script>
+
   <meta id="repository-name" content="github.com/straight-shoota/sass.cr">
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <script type="text/javascript" src="js/doc.js"></script>
   <title>README - github.com/straight-shoota/sass.cr</title>
 </head>
 <body>
 
-<div id="types-list">
-  <div id="search-box">
-    <input type="search" id="search-input" placeholder="Search...">
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false">
+    </div>
+
+    <div class="repository-links">
+      <a href="index.html">README</a>
+    </div>
   </div>
 
-  <ul>
-    <li class="current"><a href="index.html">README</a></li>
-  </ul>
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
 
-  <ul>
+  <div class="types-list">
+    <ul>
   
   <li class="parent " data-id="github.com/straight-shoota/sass.cr/Sass" data-name="sass">
       <a href="Sass.html">Sass</a>
@@ -67,9 +83,11 @@
   
 </ul>
 
+  </div>
 </div>
 
-<div id="main-content">
+
+<div class="main-content">
 <h1>sass.cr</h1>
 
 <p><a href="https://travis-ci.org/straight-shoota/sass.cr" target="_blank"><img src="https://travis-ci.org/straight-shoota/sass.cr.svg?branch=master" alt="Build Status"/></a>
@@ -85,7 +103,7 @@
 
 <p>Add this to your application's <code>shard.yml</code>:</p>
 
-<pre><code class='language-yaml'>dependencies:
+<pre><code class="language-yaml">dependencies:
   sass:
     github: straight-shoota/sass.cr</code></pre>
 
@@ -100,7 +118,7 @@ You can also run <code>make dep</code> to install <code>libsass</code> in a loca
 
 <h2>Usage</h2>
 
-<pre><code class='language-crystal'><span class="k">require</span> <span class="s">&quot;sass&quot;</span>
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;sass&quot;</span>
 
 <span class="c"># Compile a Sass/SCSS file:</span>
 css <span class="o">=</span> <span class="t">Sass</span>.compile_file(<span class="s">&quot;application.scss&quot;</span>)
