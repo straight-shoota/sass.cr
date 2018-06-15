@@ -26,13 +26,13 @@ describe "Sass::Compiler" do
     end
 
     it "compiles complex scss" do
-      Sass.compile(<<-'SCSS'
+      Sass.compile(<<-'SCSS', output_style: Sass::OutputStyle::EXPANDED).should eq <<-'CSS'
         @for $i from 1 to 3 {
           h#{$i} {
             font-size: #{(7 - $i) * 2}px;
           }
         }
-        SCSS, output_style: Sass::OutputStyle::EXPANDED).should eq <<-'CSS'
+        SCSS
         h1 {
           font-size: 12px;
         }
