@@ -182,9 +182,9 @@ struct Sass::Compiler
     raise_if_error context, compile_status
 
     String.new LibSass.context_get_output_string(context)
-  ensure
-    # For some reason freeing the compiler results in invalid memory access. Seems like it is reused.
-    # LibSass.delete_compiler(compiler)
+  # ensure
+  #   # For some reason freeing the compiler results in invalid memory access. Seems like it is reused.
+  #   LibSass.delete_compiler(compiler)
   end
 
   private def self.raise_if_error(context, status)
