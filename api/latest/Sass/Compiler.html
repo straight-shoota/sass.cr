@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.25.0">
+<meta name="generator" content="Crystal Docs 0.25.1">
 
 
 <link href="../css/style.css" rel="stylesheet" type="text/css">
@@ -90,12 +90,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">struct</span> Sass::Compiler
+  <span class="kind">class</span> Sass::Compiler
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Sass/Compiler.html">Sass::Compiler</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Sass/Compiler.html">Sass::Compiler</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -128,13 +128,6 @@ for further details.</p>
 
 
 
-  <h2>Included Modules</h2>
-  <ul class="other-types-list">
-  
-    <li class="other-type"><a href="../Sass/Compiler/Options.html">Sass::Compiler::Options</a></li>
-  
-  </ul>
-
 
 
 
@@ -147,7 +140,7 @@ for further details.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/straight-shoota/sass.cr/blob/b20252c3706b3443210e1fd37bd8da2532a5fa7e/src/compiler.cr#L37" target="_blank">compiler.cr</a>
+      <a href="https://github.com/straight-shoota/sass.cr/blob/245ef29fb1c9f95e69fc9dc90f9a58ae513aa60d/src/compiler.cr#L39" target="_blank">compiler.cr</a>
     
     <br/>
   
@@ -160,7 +153,7 @@ for further details.</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28%2A%2Cprecision%3Dnil%2Coutput_style%3Dnil%2Csource_comments%3Dnil%2Csource_map_embed%3Dnil%2Csource_map_contents%3Dnil%2Csource_map_file_urls%3Dnil%2Comit_source_map_url%3Dnil%2Cis_indented_syntax_src%3Dnil%2Cindent%3Dnil%2Clinefeed%3Dnil%2Cinput_path%3Dnil%2Coutput_path%3Dnil%2Cplugin_path%3Dnil%2Cinclude_path%3Dnil%2Csource_map_file%3Dnil%2Csource_map_root%3Dnil%29-class-method" class="signature"><strong>.new</strong>(*, precision = <span class="n">nil</span>, output_style = <span class="n">nil</span>, source_comments = <span class="n">nil</span>, source_map_embed = <span class="n">nil</span>, source_map_contents = <span class="n">nil</span>, source_map_file_urls = <span class="n">nil</span>, omit_source_map_url = <span class="n">nil</span>, is_indented_syntax_src = <span class="n">nil</span>, indent = <span class="n">nil</span>, linefeed = <span class="n">nil</span>, input_path = <span class="n">nil</span>, output_path = <span class="n">nil</span>, plugin_path = <span class="n">nil</span>, include_path = <span class="n">nil</span>, source_map_file = <span class="n">nil</span>, source_map_root = <span class="n">nil</span>)</a>
+        <a href="#new%28%2A%2Cprecision%3AInt32%3F%3Dnil%2Coutput_style%3ALibSass%3A%3ASassOutputStyle%3F%3Dnil%2Csource_comments%3ABool%3F%3Dnil%2Csource_map_embed%3ABool%3F%3Dnil%2Csource_map_contents%3ABool%3F%3Dnil%2Csource_map_file_urls%3ABool%3F%3Dnil%2Comit_source_map_url%3ABool%3F%3Dnil%2Cis_indented_syntax_src%3ABool%3F%3Dnil%2Cindent%3AString%3F%3Dnil%2Clinefeed%3AString%3F%3Dnil%2Cinput_path%3AString%3F%3Dnil%2Coutput_path%3AString%3F%3Dnil%2Cplugin_path%3AString%3F%3Dnil%2Cinclude_path%3AString%3F%3Dnil%2Csource_map_file%3AString%3F%3Dnil%2Csource_map_root%3AString%3F%3Dnil%29-class-method" class="signature"><strong>.new</strong>(*, precision : Int32? = <span class="n">nil</span>, output_style : LibSass::SassOutputStyle? = <span class="n">nil</span>, source_comments : Bool? = <span class="n">nil</span>, source_map_embed : Bool? = <span class="n">nil</span>, source_map_contents : Bool? = <span class="n">nil</span>, source_map_file_urls : Bool? = <span class="n">nil</span>, omit_source_map_url : Bool? = <span class="n">nil</span>, is_indented_syntax_src : Bool? = <span class="n">nil</span>, indent : String? = <span class="n">nil</span>, linefeed : String? = <span class="n">nil</span>, input_path : String? = <span class="n">nil</span>, output_path : String? = <span class="n">nil</span>, plugin_path : String? = <span class="n">nil</span>, include_path : String? = <span class="n">nil</span>, source_map_file : String? = <span class="n">nil</span>, source_map_root : String? = <span class="n">nil</span>)</a>
         
           <div class="summary"><p>Creates a new compiler.</p></div>
         
@@ -176,21 +169,247 @@ for further details.</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#compile%28string%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#compile</strong>(string, **options)</a>
+        <a href="#compile%28string%29-instance-method" class="signature"><strong>#compile</strong>(string)</a>
         
           <div class="summary"><p>Compiles a Sass/SCSS string to CSS as <code>String</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#compile_file%28file%2C%2A%2Aoptions%29-instance-method" class="signature"><strong>#compile_file</strong>(file, **options)</a>
+        <a href="#compile_file%28file%29-instance-method" class="signature"><strong>#compile_file</strong>(file)</a>
         
           <div class="summary"><p>Compiles a Sass/SCSS file to CSS as <code>String</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#config-instance-method" class="signature"><strong>#config</strong></a>
+        <a href="#include_path%3AString%3F-instance-method" class="signature"><strong>#include_path</strong> : String?</a>
+        
+          <div class="summary"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#include_path%3AString%3F-instance-method">#include_path</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#include_path%3D%28value%3AString%3F%29-instance-method" class="signature"><strong>#include_path=</strong>(value : String?)</a>
+        
+          <div class="summary"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#include_path%3AString%3F-instance-method">#include_path</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#indent%3AString%3F-instance-method" class="signature"><strong>#indent</strong> : String?</a>
+        
+          <div class="summary"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#indent%3AString%3F-instance-method">#indent</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#indent%3D%28value%3AString%3F%29-instance-method" class="signature"><strong>#indent=</strong>(value : String?)</a>
+        
+          <div class="summary"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#indent%3AString%3F-instance-method">#indent</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#input_path%3AString%3F-instance-method" class="signature"><strong>#input_path</strong> : String?</a>
+        
+          <div class="summary"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#input_path%3AString%3F-instance-method">#input_path</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#input_path%3D%28value%3AString%3F%29-instance-method" class="signature"><strong>#input_path=</strong>(value : String?)</a>
+        
+          <div class="summary"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#input_path%3AString%3F-instance-method">#input_path</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#is_indented_syntax_src%3ABool%3F-instance-method" class="signature"><strong>#is_indented_syntax_src</strong> : Bool?</a>
+        
+          <div class="summary"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#is_indented_syntax_src%3ABool%3F-instance-method">#is_indented_syntax_src</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#is_indented_syntax_src%3D%28is_indented_syntax_src%3ABool%3F%29-instance-method" class="signature"><strong>#is_indented_syntax_src=</strong>(is_indented_syntax_src : Bool?)</a>
+        
+          <div class="summary"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#is_indented_syntax_src%3ABool%3F-instance-method">#is_indented_syntax_src</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#linefeed%3AString%3F-instance-method" class="signature"><strong>#linefeed</strong> : String?</a>
+        
+          <div class="summary"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#linefeed%3AString%3F-instance-method">#linefeed</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#linefeed%3D%28value%3AString%3F%29-instance-method" class="signature"><strong>#linefeed=</strong>(value : String?)</a>
+        
+          <div class="summary"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#linefeed%3AString%3F-instance-method">#linefeed</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#omit_source_map_url%3ABool%3F-instance-method" class="signature"><strong>#omit_source_map_url</strong> : Bool?</a>
+        
+          <div class="summary"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#omit_source_map_url%3ABool%3F-instance-method">#omit_source_map_url</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#omit_source_map_url%3D%28omit_source_map_url%3ABool%3F%29-instance-method" class="signature"><strong>#omit_source_map_url=</strong>(omit_source_map_url : Bool?)</a>
+        
+          <div class="summary"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#omit_source_map_url%3ABool%3F-instance-method">#omit_source_map_url</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#options%3AOptions-instance-method" class="signature"><strong>#options</strong> : Options</a>
+        
+          <div class="summary"><p>Returns all options.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#output_path%3AString%3F-instance-method" class="signature"><strong>#output_path</strong> : String?</a>
+        
+          <div class="summary"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#output_path%3AString%3F-instance-method">#output_path</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#output_path%3D%28value%3AString%3F%29-instance-method" class="signature"><strong>#output_path=</strong>(value : String?)</a>
+        
+          <div class="summary"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#output_path%3AString%3F-instance-method">#output_path</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#output_style%3ALibSass%3A%3ASassOutputStyle%3F-instance-method" class="signature"><strong>#output_style</strong> : LibSass::SassOutputStyle?</a>
+        
+          <div class="summary"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#output_style%3ALibSass%3A%3ASassOutputStyle%3F-instance-method">#output_style</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#output_style%3D%28output_style%3ALibSass%3A%3ASassOutputStyle%3F%29-instance-method" class="signature"><strong>#output_style=</strong>(output_style : LibSass::SassOutputStyle?)</a>
+        
+          <div class="summary"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#output_style%3ALibSass%3A%3ASassOutputStyle%3F-instance-method">#output_style</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#plugin_path%3AString%3F-instance-method" class="signature"><strong>#plugin_path</strong> : String?</a>
+        
+          <div class="summary"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#plugin_path%3AString%3F-instance-method">#plugin_path</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#plugin_path%3D%28value%3AString%3F%29-instance-method" class="signature"><strong>#plugin_path=</strong>(value : String?)</a>
+        
+          <div class="summary"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#plugin_path%3AString%3F-instance-method">#plugin_path</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#precision%3AInt32%3F-instance-method" class="signature"><strong>#precision</strong> : Int32?</a>
+        
+          <div class="summary"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#precision%3AInt32%3F-instance-method">#precision</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#precision%3D%28precision%3AInt32%3F%29-instance-method" class="signature"><strong>#precision=</strong>(precision : Int32?)</a>
+        
+          <div class="summary"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#precision%3AInt32%3F-instance-method">#precision</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#source_comments%3ABool%3F-instance-method" class="signature"><strong>#source_comments</strong> : Bool?</a>
+        
+          <div class="summary"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_comments%3ABool%3F-instance-method">#source_comments</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#source_comments%3D%28source_comments%3ABool%3F%29-instance-method" class="signature"><strong>#source_comments=</strong>(source_comments : Bool?)</a>
+        
+          <div class="summary"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_comments%3ABool%3F-instance-method">#source_comments</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#source_map_contents%3ABool%3F-instance-method" class="signature"><strong>#source_map_contents</strong> : Bool?</a>
+        
+          <div class="summary"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_map_contents%3ABool%3F-instance-method">#source_map_contents</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#source_map_contents%3D%28source_map_contents%3ABool%3F%29-instance-method" class="signature"><strong>#source_map_contents=</strong>(source_map_contents : Bool?)</a>
+        
+          <div class="summary"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_map_contents%3ABool%3F-instance-method">#source_map_contents</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#source_map_embed%3ABool%3F-instance-method" class="signature"><strong>#source_map_embed</strong> : Bool?</a>
+        
+          <div class="summary"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_map_embed%3ABool%3F-instance-method">#source_map_embed</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#source_map_embed%3D%28source_map_embed%3ABool%3F%29-instance-method" class="signature"><strong>#source_map_embed=</strong>(source_map_embed : Bool?)</a>
+        
+          <div class="summary"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_map_embed%3ABool%3F-instance-method">#source_map_embed</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#source_map_file%3AString%3F-instance-method" class="signature"><strong>#source_map_file</strong> : String?</a>
+        
+          <div class="summary"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_map_file%3AString%3F-instance-method">#source_map_file</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#source_map_file%3D%28value%3AString%3F%29-instance-method" class="signature"><strong>#source_map_file=</strong>(value : String?)</a>
+        
+          <div class="summary"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_map_file%3AString%3F-instance-method">#source_map_file</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#source_map_file_urls%3ABool%3F-instance-method" class="signature"><strong>#source_map_file_urls</strong> : Bool?</a>
+        
+          <div class="summary"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_map_file_urls%3ABool%3F-instance-method">#source_map_file_urls</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#source_map_file_urls%3D%28source_map_file_urls%3ABool%3F%29-instance-method" class="signature"><strong>#source_map_file_urls=</strong>(source_map_file_urls : Bool?)</a>
+        
+          <div class="summary"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_map_file_urls%3ABool%3F-instance-method">#source_map_file_urls</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#source_map_root%3AString%3F-instance-method" class="signature"><strong>#source_map_root</strong> : String?</a>
+        
+          <div class="summary"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_map_root%3AString%3F-instance-method">#source_map_root</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#source_map_root%3D%28value%3AString%3F%29-instance-method" class="signature"><strong>#source_map_root=</strong>(value : String?)</a>
+        
+          <div class="summary"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_map_root%3AString%3F-instance-method">#source_map_root</a></code>.</p></div>
         
       </li>
     
@@ -201,190 +420,6 @@ for further details.</p>
 
 
 <div class="methods-inherited">
-  
-    
-
-  <h3>Instance methods inherited from module <code><a href="../Sass/Compiler/Options.html">Sass::Compiler::Options</a></code></h3>
-  
-  
-    <a href="../Sass/Compiler/Options.html#include_path%3AString%3F-instance-method" class="tooltip">
-      <span>include_path : String?</span>
-    include_path</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#include_path%3D%28value%3AString%3F%29-instance-method" class="tooltip">
-      <span>include_path=(value : String?)</span>
-    include_path=</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#indent%3AString%3F-instance-method" class="tooltip">
-      <span>indent : String?</span>
-    indent</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#indent%3D%28value%3AString%3F%29-instance-method" class="tooltip">
-      <span>indent=(value : String?)</span>
-    indent=</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#input_path%3AString%3F-instance-method" class="tooltip">
-      <span>input_path : String?</span>
-    input_path</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#input_path%3D%28value%3AString%3F%29-instance-method" class="tooltip">
-      <span>input_path=(value : String?)</span>
-    input_path=</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#is_indented_syntax_src%3ABool%3F-instance-method" class="tooltip">
-      <span>is_indented_syntax_src : Bool?</span>
-    is_indented_syntax_src</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#is_indented_syntax_src%3D%28is_indented_syntax_src%3ABool%3F%29-instance-method" class="tooltip">
-      <span>is_indented_syntax_src=(is_indented_syntax_src : Bool?)</span>
-    is_indented_syntax_src=</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#linefeed%3AString%3F-instance-method" class="tooltip">
-      <span>linefeed : String?</span>
-    linefeed</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#linefeed%3D%28value%3AString%3F%29-instance-method" class="tooltip">
-      <span>linefeed=(value : String?)</span>
-    linefeed=</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#omit_source_map_url%3ABool%3F-instance-method" class="tooltip">
-      <span>omit_source_map_url : Bool?</span>
-    omit_source_map_url</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#omit_source_map_url%3D%28omit_source_map_url%3ABool%3F%29-instance-method" class="tooltip">
-      <span>omit_source_map_url=(omit_source_map_url : Bool?)</span>
-    omit_source_map_url=</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#output_path%3AString%3F-instance-method" class="tooltip">
-      <span>output_path : String?</span>
-    output_path</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#output_path%3D%28value%3AString%3F%29-instance-method" class="tooltip">
-      <span>output_path=(value : String?)</span>
-    output_path=</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#output_style%3AOutputStyle%3F-instance-method" class="tooltip">
-      <span>output_style : OutputStyle?</span>
-    output_style</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#output_style%3D%28output_style%3AOutputStyle%3F%29-instance-method" class="tooltip">
-      <span>output_style=(output_style : OutputStyle?)</span>
-    output_style=</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#plugin_path%3AString%3F-instance-method" class="tooltip">
-      <span>plugin_path : String?</span>
-    plugin_path</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#plugin_path%3D%28value%3AString%3F%29-instance-method" class="tooltip">
-      <span>plugin_path=(value : String?)</span>
-    plugin_path=</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#precision%3AInt32%3F-instance-method" class="tooltip">
-      <span>precision : Int32?</span>
-    precision</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#precision%3D%28precision%3AInt32%3F%29-instance-method" class="tooltip">
-      <span>precision=(precision : Int32?)</span>
-    precision=</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#source_comments%3ABool%3F-instance-method" class="tooltip">
-      <span>source_comments : Bool?</span>
-    source_comments</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#source_comments%3D%28source_comments%3ABool%3F%29-instance-method" class="tooltip">
-      <span>source_comments=(source_comments : Bool?)</span>
-    source_comments=</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#source_map_contents%3ABool%3F-instance-method" class="tooltip">
-      <span>source_map_contents : Bool?</span>
-    source_map_contents</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#source_map_contents%3D%28source_map_contents%3ABool%3F%29-instance-method" class="tooltip">
-      <span>source_map_contents=(source_map_contents : Bool?)</span>
-    source_map_contents=</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#source_map_embed%3ABool%3F-instance-method" class="tooltip">
-      <span>source_map_embed : Bool?</span>
-    source_map_embed</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#source_map_embed%3D%28source_map_embed%3ABool%3F%29-instance-method" class="tooltip">
-      <span>source_map_embed=(source_map_embed : Bool?)</span>
-    source_map_embed=</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#source_map_file%3AString%3F-instance-method" class="tooltip">
-      <span>source_map_file : String?</span>
-    source_map_file</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#source_map_file%3D%28value%3AString%3F%29-instance-method" class="tooltip">
-      <span>source_map_file=(value : String?)</span>
-    source_map_file=</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#source_map_file_urls%3ABool%3F-instance-method" class="tooltip">
-      <span>source_map_file_urls : Bool?</span>
-    source_map_file_urls</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#source_map_file_urls%3D%28source_map_file_urls%3ABool%3F%29-instance-method" class="tooltip">
-      <span>source_map_file_urls=(source_map_file_urls : Bool?)</span>
-    source_map_file_urls=</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#source_map_root%3AString%3F-instance-method" class="tooltip">
-      <span>source_map_root : String?</span>
-    source_map_root</a>, 
-    
-  
-    <a href="../Sass/Compiler/Options.html#source_map_root%3D%28value%3AString%3F%29-instance-method" class="tooltip">
-      <span>source_map_root=(value : String?)</span>
-    source_map_root=</a>
-    
-  
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
   
     
 
@@ -411,12 +446,12 @@ for further details.</p>
 
   <h2>Constructor Detail</h2>
   
-    <div class="entry-detail" id="new(*,precision=nil,output_style=nil,source_comments=nil,source_map_embed=nil,source_map_contents=nil,source_map_file_urls=nil,omit_source_map_url=nil,is_indented_syntax_src=nil,indent=nil,linefeed=nil,input_path=nil,output_path=nil,plugin_path=nil,include_path=nil,source_map_file=nil,source_map_root=nil)-class-method">
+    <div class="entry-detail" id="new(*,precision:Int32?=nil,output_style:LibSass::SassOutputStyle?=nil,source_comments:Bool?=nil,source_map_embed:Bool?=nil,source_map_contents:Bool?=nil,source_map_file_urls:Bool?=nil,omit_source_map_url:Bool?=nil,is_indented_syntax_src:Bool?=nil,indent:String?=nil,linefeed:String?=nil,input_path:String?=nil,output_path:String?=nil,plugin_path:String?=nil,include_path:String?=nil,source_map_file:String?=nil,source_map_root:String?=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(*, precision = <span class="n">nil</span>, output_style = <span class="n">nil</span>, source_comments = <span class="n">nil</span>, source_map_embed = <span class="n">nil</span>, source_map_contents = <span class="n">nil</span>, source_map_file_urls = <span class="n">nil</span>, omit_source_map_url = <span class="n">nil</span>, is_indented_syntax_src = <span class="n">nil</span>, indent = <span class="n">nil</span>, linefeed = <span class="n">nil</span>, input_path = <span class="n">nil</span>, output_path = <span class="n">nil</span>, plugin_path = <span class="n">nil</span>, include_path = <span class="n">nil</span>, source_map_file = <span class="n">nil</span>, source_map_root = <span class="n">nil</span>)
+        def self.<strong>new</strong>(*, precision : Int32? = <span class="n">nil</span>, output_style : LibSass::SassOutputStyle? = <span class="n">nil</span>, source_comments : Bool? = <span class="n">nil</span>, source_map_embed : Bool? = <span class="n">nil</span>, source_map_contents : Bool? = <span class="n">nil</span>, source_map_file_urls : Bool? = <span class="n">nil</span>, omit_source_map_url : Bool? = <span class="n">nil</span>, is_indented_syntax_src : Bool? = <span class="n">nil</span>, indent : String? = <span class="n">nil</span>, linefeed : String? = <span class="n">nil</span>, input_path : String? = <span class="n">nil</span>, output_path : String? = <span class="n">nil</span>, plugin_path : String? = <span class="n">nil</span>, include_path : String? = <span class="n">nil</span>, source_map_file : String? = <span class="n">nil</span>, source_map_root : String? = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new%28%2A%2Cprecision%3Dnil%2Coutput_style%3Dnil%2Csource_comments%3Dnil%2Csource_map_embed%3Dnil%2Csource_map_contents%3Dnil%2Csource_map_file_urls%3Dnil%2Comit_source_map_url%3Dnil%2Cis_indented_syntax_src%3Dnil%2Cindent%3Dnil%2Clinefeed%3Dnil%2Cinput_path%3Dnil%2Coutput_path%3Dnil%2Cplugin_path%3Dnil%2Cinclude_path%3Dnil%2Csource_map_file%3Dnil%2Csource_map_root%3Dnil%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28%2A%2Cprecision%3AInt32%3F%3Dnil%2Coutput_style%3ALibSass%3A%3ASassOutputStyle%3F%3Dnil%2Csource_comments%3ABool%3F%3Dnil%2Csource_map_embed%3ABool%3F%3Dnil%2Csource_map_contents%3ABool%3F%3Dnil%2Csource_map_file_urls%3ABool%3F%3Dnil%2Comit_source_map_url%3ABool%3F%3Dnil%2Cis_indented_syntax_src%3ABool%3F%3Dnil%2Cindent%3AString%3F%3Dnil%2Clinefeed%3AString%3F%3Dnil%2Cinput_path%3AString%3F%3Dnil%2Coutput_path%3AString%3F%3Dnil%2Cplugin_path%3AString%3F%3Dnil%2Cinclude_path%3AString%3F%3Dnil%2Csource_map_file%3AString%3F%3Dnil%2Csource_map_root%3AString%3F%3Dnil%29-class-method">#</a>
       </div>
       
         <div class="doc"><p>Creates a new compiler. All options can be assigned as named arguments.</p></div>
@@ -424,7 +459,7 @@ for further details.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/straight-shoota/sass.cr/blob/b20252c3706b3443210e1fd37bd8da2532a5fa7e/src/compiler.cr#L77" target="_blank">View source</a>]
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/245ef29fb1c9f95e69fc9dc90f9a58ae513aa60d/src/compiler.cr#L58" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -436,12 +471,12 @@ for further details.</p>
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="compile(string,**options)-instance-method">
+    <div class="entry-detail" id="compile(string)-instance-method">
       <div class="signature">
         
-        def <strong>compile</strong>(string, **options)
+        def <strong>compile</strong>(string)
 
-        <a class="method-permalink" href="#compile%28string%2C%2A%2Aoptions%29-instance-method">#</a>
+        <a class="method-permalink" href="#compile%28string%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Compiles a Sass/SCSS string to CSS as <code>String</code>.</p>
@@ -451,17 +486,17 @@ for further details.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/straight-shoota/sass.cr/blob/b20252c3706b3443210e1fd37bd8da2532a5fa7e/src/compiler.cr#L116" target="_blank">View source</a>]
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/245ef29fb1c9f95e69fc9dc90f9a58ae513aa60d/src/compiler.cr#L98" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="compile_file(file,**options)-instance-method">
+    <div class="entry-detail" id="compile_file(file)-instance-method">
       <div class="signature">
         
-        def <strong>compile_file</strong>(file, **options)
+        def <strong>compile_file</strong>(file)
 
-        <a class="method-permalink" href="#compile_file%28file%2C%2A%2Aoptions%29-instance-method">#</a>
+        <a class="method-permalink" href="#compile_file%28file%29-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Compiles a Sass/SCSS file to CSS as <code>String</code>.</p>
@@ -471,23 +506,553 @@ for further details.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/straight-shoota/sass.cr/blob/b20252c3706b3443210e1fd37bd8da2532a5fa7e/src/compiler.cr#L148" target="_blank">View source</a>]
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/245ef29fb1c9f95e69fc9dc90f9a58ae513aa60d/src/compiler.cr#L130" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="config-instance-method">
+    <div class="entry-detail" id="include_path:String?-instance-method">
       <div class="signature">
         
-        def <strong>config</strong>
+        def <strong>include_path</strong> : String?
 
-        <a class="method-permalink" href="#config-instance-method">#</a>
+        <a class="method-permalink" href="#include_path%3AString%3F-instance-method">#</a>
       </div>
+      
+        <div class="doc"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#include_path%3AString%3F-instance-method">#include_path</a></code>.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/straight-shoota/sass.cr/blob/b20252c3706b3443210e1fd37bd8da2532a5fa7e/src/compiler.cr#L77" target="_blank">View source</a>]
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="include_path=(value:String?)-instance-method">
+      <div class="signature">
+        
+        def <strong>include_path=</strong>(value : String?)
+
+        <a class="method-permalink" href="#include_path%3D%28value%3AString%3F%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#include_path%3AString%3F-instance-method">#include_path</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/245ef29fb1c9f95e69fc9dc90f9a58ae513aa60d/src/compiler.cr#L43" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="indent:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>indent</strong> : String?
+
+        <a class="method-permalink" href="#indent%3AString%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#indent%3AString%3F-instance-method">#indent</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="indent=(value:String?)-instance-method">
+      <div class="signature">
+        
+        def <strong>indent=</strong>(value : String?)
+
+        <a class="method-permalink" href="#indent%3D%28value%3AString%3F%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#indent%3AString%3F-instance-method">#indent</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/245ef29fb1c9f95e69fc9dc90f9a58ae513aa60d/src/compiler.cr#L43" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="input_path:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>input_path</strong> : String?
+
+        <a class="method-permalink" href="#input_path%3AString%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#input_path%3AString%3F-instance-method">#input_path</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="input_path=(value:String?)-instance-method">
+      <div class="signature">
+        
+        def <strong>input_path=</strong>(value : String?)
+
+        <a class="method-permalink" href="#input_path%3D%28value%3AString%3F%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#input_path%3AString%3F-instance-method">#input_path</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/245ef29fb1c9f95e69fc9dc90f9a58ae513aa60d/src/compiler.cr#L43" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="is_indented_syntax_src:Bool?-instance-method">
+      <div class="signature">
+        
+        def <strong>is_indented_syntax_src</strong> : Bool?
+
+        <a class="method-permalink" href="#is_indented_syntax_src%3ABool%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#is_indented_syntax_src%3ABool%3F-instance-method">#is_indented_syntax_src</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="is_indented_syntax_src=(is_indented_syntax_src:Bool?)-instance-method">
+      <div class="signature">
+        
+        def <strong>is_indented_syntax_src=</strong>(is_indented_syntax_src : Bool?)
+
+        <a class="method-permalink" href="#is_indented_syntax_src%3D%28is_indented_syntax_src%3ABool%3F%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#is_indented_syntax_src%3ABool%3F-instance-method">#is_indented_syntax_src</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="linefeed:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>linefeed</strong> : String?
+
+        <a class="method-permalink" href="#linefeed%3AString%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#linefeed%3AString%3F-instance-method">#linefeed</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="linefeed=(value:String?)-instance-method">
+      <div class="signature">
+        
+        def <strong>linefeed=</strong>(value : String?)
+
+        <a class="method-permalink" href="#linefeed%3D%28value%3AString%3F%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#linefeed%3AString%3F-instance-method">#linefeed</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/245ef29fb1c9f95e69fc9dc90f9a58ae513aa60d/src/compiler.cr#L43" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="omit_source_map_url:Bool?-instance-method">
+      <div class="signature">
+        
+        def <strong>omit_source_map_url</strong> : Bool?
+
+        <a class="method-permalink" href="#omit_source_map_url%3ABool%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#omit_source_map_url%3ABool%3F-instance-method">#omit_source_map_url</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="omit_source_map_url=(omit_source_map_url:Bool?)-instance-method">
+      <div class="signature">
+        
+        def <strong>omit_source_map_url=</strong>(omit_source_map_url : Bool?)
+
+        <a class="method-permalink" href="#omit_source_map_url%3D%28omit_source_map_url%3ABool%3F%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#omit_source_map_url%3ABool%3F-instance-method">#omit_source_map_url</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="options:Options-instance-method">
+      <div class="signature">
+        
+        def <strong>options</strong> : <a href="../Sass/Compiler/Options.html">Options</a>
+
+        <a class="method-permalink" href="#options%3AOptions-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns all options.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/245ef29fb1c9f95e69fc9dc90f9a58ae513aa60d/src/compiler.cr#L58" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="output_path:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>output_path</strong> : String?
+
+        <a class="method-permalink" href="#output_path%3AString%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#output_path%3AString%3F-instance-method">#output_path</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="output_path=(value:String?)-instance-method">
+      <div class="signature">
+        
+        def <strong>output_path=</strong>(value : String?)
+
+        <a class="method-permalink" href="#output_path%3D%28value%3AString%3F%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#output_path%3AString%3F-instance-method">#output_path</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/245ef29fb1c9f95e69fc9dc90f9a58ae513aa60d/src/compiler.cr#L43" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="output_style:LibSass::SassOutputStyle?-instance-method">
+      <div class="signature">
+        
+        def <strong>output_style</strong> : LibSass::SassOutputStyle?
+
+        <a class="method-permalink" href="#output_style%3ALibSass%3A%3ASassOutputStyle%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#output_style%3ALibSass%3A%3ASassOutputStyle%3F-instance-method">#output_style</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="output_style=(output_style:LibSass::SassOutputStyle?)-instance-method">
+      <div class="signature">
+        
+        def <strong>output_style=</strong>(output_style : LibSass::SassOutputStyle?)
+
+        <a class="method-permalink" href="#output_style%3D%28output_style%3ALibSass%3A%3ASassOutputStyle%3F%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#output_style%3ALibSass%3A%3ASassOutputStyle%3F-instance-method">#output_style</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="plugin_path:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>plugin_path</strong> : String?
+
+        <a class="method-permalink" href="#plugin_path%3AString%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#plugin_path%3AString%3F-instance-method">#plugin_path</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="plugin_path=(value:String?)-instance-method">
+      <div class="signature">
+        
+        def <strong>plugin_path=</strong>(value : String?)
+
+        <a class="method-permalink" href="#plugin_path%3D%28value%3AString%3F%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#plugin_path%3AString%3F-instance-method">#plugin_path</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/245ef29fb1c9f95e69fc9dc90f9a58ae513aa60d/src/compiler.cr#L43" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="precision:Int32?-instance-method">
+      <div class="signature">
+        
+        def <strong>precision</strong> : Int32?
+
+        <a class="method-permalink" href="#precision%3AInt32%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#precision%3AInt32%3F-instance-method">#precision</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="precision=(precision:Int32?)-instance-method">
+      <div class="signature">
+        
+        def <strong>precision=</strong>(precision : Int32?)
+
+        <a class="method-permalink" href="#precision%3D%28precision%3AInt32%3F%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#precision%3AInt32%3F-instance-method">#precision</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="source_comments:Bool?-instance-method">
+      <div class="signature">
+        
+        def <strong>source_comments</strong> : Bool?
+
+        <a class="method-permalink" href="#source_comments%3ABool%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_comments%3ABool%3F-instance-method">#source_comments</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="source_comments=(source_comments:Bool?)-instance-method">
+      <div class="signature">
+        
+        def <strong>source_comments=</strong>(source_comments : Bool?)
+
+        <a class="method-permalink" href="#source_comments%3D%28source_comments%3ABool%3F%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_comments%3ABool%3F-instance-method">#source_comments</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="source_map_contents:Bool?-instance-method">
+      <div class="signature">
+        
+        def <strong>source_map_contents</strong> : Bool?
+
+        <a class="method-permalink" href="#source_map_contents%3ABool%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_map_contents%3ABool%3F-instance-method">#source_map_contents</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="source_map_contents=(source_map_contents:Bool?)-instance-method">
+      <div class="signature">
+        
+        def <strong>source_map_contents=</strong>(source_map_contents : Bool?)
+
+        <a class="method-permalink" href="#source_map_contents%3D%28source_map_contents%3ABool%3F%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_map_contents%3ABool%3F-instance-method">#source_map_contents</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="source_map_embed:Bool?-instance-method">
+      <div class="signature">
+        
+        def <strong>source_map_embed</strong> : Bool?
+
+        <a class="method-permalink" href="#source_map_embed%3ABool%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_map_embed%3ABool%3F-instance-method">#source_map_embed</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="source_map_embed=(source_map_embed:Bool?)-instance-method">
+      <div class="signature">
+        
+        def <strong>source_map_embed=</strong>(source_map_embed : Bool?)
+
+        <a class="method-permalink" href="#source_map_embed%3D%28source_map_embed%3ABool%3F%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_map_embed%3ABool%3F-instance-method">#source_map_embed</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="source_map_file:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>source_map_file</strong> : String?
+
+        <a class="method-permalink" href="#source_map_file%3AString%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_map_file%3AString%3F-instance-method">#source_map_file</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="source_map_file=(value:String?)-instance-method">
+      <div class="signature">
+        
+        def <strong>source_map_file=</strong>(value : String?)
+
+        <a class="method-permalink" href="#source_map_file%3D%28value%3AString%3F%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_map_file%3AString%3F-instance-method">#source_map_file</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/245ef29fb1c9f95e69fc9dc90f9a58ae513aa60d/src/compiler.cr#L43" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="source_map_file_urls:Bool?-instance-method">
+      <div class="signature">
+        
+        def <strong>source_map_file_urls</strong> : Bool?
+
+        <a class="method-permalink" href="#source_map_file_urls%3ABool%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_map_file_urls%3ABool%3F-instance-method">#source_map_file_urls</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="source_map_file_urls=(source_map_file_urls:Bool?)-instance-method">
+      <div class="signature">
+        
+        def <strong>source_map_file_urls=</strong>(source_map_file_urls : Bool?)
+
+        <a class="method-permalink" href="#source_map_file_urls%3D%28source_map_file_urls%3ABool%3F%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_map_file_urls%3ABool%3F-instance-method">#source_map_file_urls</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="source_map_root:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>source_map_root</strong> : String?
+
+        <a class="method-permalink" href="#source_map_root%3AString%3F-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Gets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_map_root%3AString%3F-instance-method">#source_map_root</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="source_map_root=(value:String?)-instance-method">
+      <div class="signature">
+        
+        def <strong>source_map_root=</strong>(value : String?)
+
+        <a class="method-permalink" href="#source_map_root%3D%28value%3AString%3F%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sets <code>libsass</code> option <code><a href="../Sass/Compiler.html#source_map_root%3AString%3F-instance-method">#source_map_root</a></code>.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/straight-shoota/sass.cr/blob/245ef29fb1c9f95e69fc9dc90f9a58ae513aa60d/src/compiler.cr#L43" target="_blank">View source</a>]
         
       </div>
     </div>
