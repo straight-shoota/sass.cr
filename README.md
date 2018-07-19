@@ -42,7 +42,7 @@ css = Sass.compile_file("application.sass", include_path: "includes")
 css = Sass.compile("body { div { color: red; } }")
 
 # Re-use compiler with options:
-compiler = Sass::Compiler.new(include_path: "includes", precision: 4)
+compiler = Sass.new(include_path: "includes", precision: 4)
 compiler.include_path += ":other_includes"
 css_application = compiler.compile_file("application.scss")
 css_layout = compiler.compile(%(@import "layout";))

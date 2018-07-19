@@ -41,21 +41,6 @@
       
         <ul>
   
-  <li class="parent " data-id="github.com/straight-shoota/sass.cr/Sass/Compiler" data-name="sass::compiler">
-      <a href="Sass/Compiler.html">Compiler</a>
-      
-        <ul>
-  
-  <li class=" " data-id="github.com/straight-shoota/sass.cr/Sass/Compiler/Options" data-name="sass::compiler::options">
-      <a href="Sass/Compiler/Options.html">Options</a>
-      
-    </li>
-  
-</ul>
-
-      
-    </li>
-  
   <li class="parent " data-id="github.com/straight-shoota/sass.cr/Sass/CompilerError" data-name="sass::compilererror">
       <a href="Sass/CompilerError.html">CompilerError</a>
       
@@ -68,6 +53,11 @@
   
 </ul>
 
+      
+    </li>
+  
+  <li class=" " data-id="github.com/straight-shoota/sass.cr/Sass/Options" data-name="sass::options">
+      <a href="Sass/Options.html">Options</a>
       
     </li>
   
@@ -130,7 +120,7 @@ css <span class="o">=</span> <span class="t">Sass</span>.compile_file(<span clas
 css <span class="o">=</span> <span class="t">Sass</span>.compile(<span class="s">&quot;body { div { color: red; } }&quot;</span>)
 
 <span class="c"># Re-use compiler with options:</span>
-compiler <span class="o">=</span> <span class="t">Sass</span><span class="t">::</span><span class="t">Compiler</span>.<span class="k">new</span>(include_path: <span class="s">&quot;includes&quot;</span>, precision: <span class="n">4</span>)
+compiler <span class="o">=</span> <span class="t">Sass</span>.<span class="k">new</span>(include_path: <span class="s">&quot;includes&quot;</span>, precision: <span class="n">4</span>)
 compiler.include_path += <span class="s">&quot;:other_includes&quot;</span>
 css_application <span class="o">=</span> compiler.compile_file(<span class="s">&quot;application.scss&quot;</span>)
 css_layout <span class="o">=</span> compiler.compile(<span class="s">%(@import &quot;layout&quot;;)</span>)</code></pre>
