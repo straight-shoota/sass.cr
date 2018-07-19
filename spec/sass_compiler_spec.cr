@@ -104,20 +104,6 @@ describe "Sass::Compiler" do
   end
 
   describe "options" do
-    it "mixes compiler and call options" do
-      Sass::Compiler.new(precision: 2).compile(
-        %(html { font-size: \#{12.123123}pt; }),
-        output_style: Sass::OutputStyle::COMPACT
-      ).should eq %(html { font-size: 12.12pt; }\n)
-    end
-
-    it "call options overwrite compiler options" do
-      Sass::Compiler.new(precision: 2).compile(
-        %(html { font-size: \#{12.123123}pt; }),
-        precision: 4, output_style: Sass::OutputStyle::COMPACT
-      ).should eq %(html { font-size: 12.1231pt; }\n)
-    end
-
     it "handles null byte" do
       expect_raises ArgumentError, "String contains null byte" do
         Sass::Compiler.new(input_path: "foo\0bar")

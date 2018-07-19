@@ -1,3 +1,5 @@
+require "./sass"
+
 # This compiler provides a simple API to compile Sass and SCSS with `libsass`.
 #
 # Example usage:
@@ -34,65 +36,44 @@
 #
 # Please refer to the [`libsass` API documentation](https://github.com/sass/libsass/blob/master/docs/api-doc.md)
 # for further details.
-struct Sass::Compiler
-  # :nodoc:
-  OPTION_TYPES = {
-    precision:              Int32,
-    output_style:           OutputStyle,
-    source_comments:        Bool,
-    source_map_embed:       Bool,
-    source_map_contents:    Bool,
-    source_map_file_urls:   Bool,
-    omit_source_map_url:    Bool,
-    is_indented_syntax_src: Bool,
-    indent:                 String,
-    linefeed:               String,
-    input_path:             String,
-    output_path:            String,
-    plugin_path:            String,
-    include_path:           String,
-    source_map_file:        String,
-    source_map_root:        String,
-  }
+class Sass::Compiler
+  # libsass options
+  alias Options = {precision: Int32?, output_style: OutputStyle?, source_comments: Bool?, source_map_embed: Bool?, source_map_contents: Bool?, source_map_file_urls: Bool?, omit_source_map_url: Bool?, is_indented_syntax_src: Bool?, indent: String?, linefeed: String?, input_path: String?, output_path: String?, plugin_path: String?, include_path: String?, source_map_file: String?, source_map_root: String?}
 
-  module Options
-    {% for name, option_type in OPTION_TYPES %}
-      # Gets `libsass` option `{{name.id}}`.
-      getter {{name.id}} : {{option_type}}?
+  {% for name in Options.keys %}
+    # Gets `libsass` option `{{name.id}}`.
+    getter {{name.id}} : {{Options[name]}}
 
-      {% if option_type.resolve == String %}
-      # Sets `libsass` option `{{name.id}}`.
-      def {{name.id}}=(value : String?)
-        @{{name.id}} = value.try &.check_no_null_byte
-      end
-      {% else %}
-      # Sets `libsass` option `{{name.id}}`.
-      setter {{name.id}} : {{option_type}}?
-      {% end %}
+    {% if Options[name].union_types.includes?(String) %}
+    # Sets `libsass` option `{{name.id}}`.
+    def {{name.id}}=(value : String?)
+      @{{name.id}} = value.try &.check_no_null_byte
+    end
+    {% else %}
+    # Sets `libsass` option `{{name.id}}`.
+    setter {{name.id}} : {{ Options[name] }}
     {% end %}
-  end
-
-  include Options
+  {% end %}
 
   {% begin %}
     # Creates a new compiler. All options can be assigned as named arguments.
-    def initialize(*, {{
-                        *OPTION_TYPES.keys.map do |option|
-                          "@#{option.id} = nil".id
-                        end
-                      }})
-      {% for name, option_type in OPTION_TYPES %}
-        {% if option_type.resolve == String %}
-          {{name}}.try &.check_no_null_byte
+    def initialize(*,
+                   {% for name in Options.keys %}
+                     @{{name.id}} : {{ Options[name] }} = nil,
+                   {% end %}
+                  )
+      {% for name in Options.keys %}
+        {% if Options[name].union_types.includes?(String) %}
+          @{{name}}.try &.check_no_null_byte
         {% end %}
       {% end %}
     end
 
     private def self.set_options(options, **option_values)
-      {% for name, option_type in OPTION_TYPES %}
+      {% for name in Options.keys %}
       unless (val = option_values[:{{name.id}}]?).nil?
         LibSass.option_set_{{name.id}}(options,
-          {% if option_type.resolve == String %}
+          {% if Options[name].union_types.includes?(String) %}
             val.check_no_null_byte
           {% else %}
             val
@@ -101,9 +82,10 @@ struct Sass::Compiler
       {% end %}
     end
 
-    def config
+    # Returns all options.
+    def options : Options
       {
-        {% for name, option_type in OPTION_TYPES %}
+        {% for name in Options.keys %}
           {{ name.id }}: {{ name.id }},
         {% end %}
       }
@@ -113,8 +95,8 @@ struct Sass::Compiler
   # Compiles a Sass/SCSS string to CSS as `String`.
   #
   # For available options see class description.
-  def compile(string, **options)
-    Compiler.compile(string, **config.merge(**options))
+  def compile(string)
+    Compiler.compile(string, **options)
   end
 
   # :nodoc:
@@ -145,8 +127,8 @@ struct Sass::Compiler
   # Compiles a Sass/SCSS file to CSS as `String`.
   #
   # For available options see class description.
-  def compile_file(file, **options)
-    Compiler.compile_file(file, **config.merge(**options))
+  def compile_file(file)
+    Compiler.compile_file(file, **options)
   end
 
   # :nodoc:
@@ -182,9 +164,9 @@ struct Sass::Compiler
     raise_if_error context, compile_status
 
     String.new LibSass.context_get_output_string(context)
-  # ensure
-  #   # For some reason freeing the compiler results in invalid memory access. Seems like it is reused.
-  #   LibSass.delete_compiler(compiler)
+    # ensure
+    #   # For some reason freeing the compiler results in invalid memory access. Seems like it is reused.
+    #   LibSass.delete_compiler(compiler)
   end
 
   private def self.raise_if_error(context, status)
