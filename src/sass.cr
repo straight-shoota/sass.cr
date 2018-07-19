@@ -1,4 +1,4 @@
-module Sass
+class Sass
   VERSION = "0.4.0"
 
   alias OutputStyle = LibSass::SassOutputStyle
@@ -10,14 +10,14 @@ module Sass
 
   # Compiles a Sass/SCSS string and returns CSS as `String`.
   #
-  # For available options see `Sass::Compiler`.
+  # For available options see `Sass::Options`.
   def self.compile(string, **options)
     Compiler.compile(string, **options)
   end
 
   # Compiles a Sass/SCSS file and returns CSS as `String`.
   #
-  # For available options see `Sass::Compiler`.
+  # For available options see `Sass::Options`.
   def self.compile_file(file, **options)
     Compiler.compile_file(file, **options)
   end

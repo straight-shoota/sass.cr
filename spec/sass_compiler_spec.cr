@@ -11,7 +11,7 @@ private SIMPLE_CSS    = <<-'CSS'
 
   CSS
 
-describe "Sass::Compiler" do
+describe "Sass" do
   describe "#compile" do
     it "compiles simple scss" do
       Sass.compile(%(body { div { color: red }})).should eq "body div {\n  color: red; }\n"
@@ -106,13 +106,13 @@ describe "Sass::Compiler" do
   describe "options" do
     it "handles null byte" do
       expect_raises ArgumentError, "String contains null byte" do
-        Sass::Compiler.new(input_path: "foo\0bar")
+        Sass.new(input_path: "foo\0bar")
       end
       expect_raises ArgumentError, "String contains null byte" do
-        Sass::Compiler.compile("foo.sass", source_map_file: "null\0.map")
+        Sass.compile("foo.sass", source_map_file: "null\0.map")
       end
 
-      compiler = Sass::Compiler.new
+      compiler = Sass.new
       expect_raises ArgumentError, "String contains null byte" do
         compiler.indent = "\0"
       end
@@ -122,14 +122,14 @@ describe "Sass::Compiler" do
   # TODO: find_file returns empty string
   pending "#find_file" do
     it "finds file" do
-      Sass::Compiler.new(include_path: INCLUDES_PATH).find_file("_simple.scss").should eq File.join(INCLUDES_PATH, "_simple.scss")
+      Sass.new(include_path: INCLUDES_PATH).find_file("_simple.scss").should eq File.join(INCLUDES_PATH, "_simple.scss")
     end
   end
 
   # TODO: find_include returns empty string
   pending "#find_include" do
     it "finds file" do
-      Sass::Compiler.new(include_path: INCLUDES_PATH).find_file("simple").should eq File.join(INCLUDES_PATH, "_simple.scss")
+      Sass.new(include_path: INCLUDES_PATH).find_file("simple").should eq File.join(INCLUDES_PATH, "_simple.scss")
     end
   end
 end

@@ -2,9 +2,22 @@ require "./sass"
 
 # This compiler provides a simple API to compile Sass and SCSS with `libsass`.
 #
-# Example usage:
-# ```
-# compiler = Sass::Compiler.new(include_path: "_scss")
+# Usage examples:
+#
+# ```crystal
+# require "sass"
+#
+# # Compile a Sass/SCSS file:
+# css = Sass.compile_file("application.scss")
+#
+# # Compile a Sass/SCSS file with options:
+# css = Sass.compile_file("application.sass", include_path: "includes")
+#
+# # Compile a Sass/SCSS string:
+# css = Sass.compile("body { div { color: red; } }")
+#
+# Re-use compiler with options:
+# compiler = Sass.new(include_path: "_scss")
 # compiler.compile_file("main.scss")     # Compile file main.scss
 # compiler.compile(%(@import "helper";)) # Import file _scss/helper.scss or _scss/_helper.scss
 # ```
@@ -36,7 +49,7 @@ require "./sass"
 #
 # Please refer to the [`libsass` API documentation](https://github.com/sass/libsass/blob/master/docs/api-doc.md)
 # for further details.
-class Sass::Compiler
+class Sass
   # libsass options
   alias Options = {precision: Int32?, output_style: OutputStyle?, source_comments: Bool?, source_map_embed: Bool?, source_map_contents: Bool?, source_map_file_urls: Bool?, omit_source_map_url: Bool?, is_indented_syntax_src: Bool?, indent: String?, linefeed: String?, input_path: String?, output_path: String?, plugin_path: String?, include_path: String?, source_map_file: String?, source_map_root: String?}
 

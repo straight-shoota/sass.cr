@@ -1,4 +1,4 @@
-module Sass
+class Sass
   # Converts a `String` with Sass code into SCSS.
   #
   # *prettify* takes the following values:
