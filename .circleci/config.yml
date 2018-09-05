@@ -1,0 +1,87 @@
+version: 2
+
+dry:
+  restore_libsass_cache: &restore_libsass_cache
+    keys:
+      - libsass-cache-v1-{{ .Branch }}-{{ checksum "Makefile" }}
+      - libsass-cache-v1-{{ .Branch }}
+      - libsass-cache-v1
+
+  save_libsass_cache: &save_libsass_cache
+    key: libsass-cache-v1-{{ .Branch }}-{{ checksum "Makefile" }}
+    paths:
+      - ./dynlib
+
+  restore_shards_cache: &restore_shards_cache
+    # Use {{ checksum "shard.yml" }} if developing a shard instead of an app
+    keys:
+      - shards-cache-v1-{{ .Branch }}-{{ checksum "shard.yml" }}
+      - shards-cache-v1-{{ .Branch }}
+      - shards-cache-v1
+
+  save_shards_cache: &save_shards_cache
+    # Use {{ checksum "shard.yml" }} if developing a shard instead of an app
+    key: shards-cache-v1-{{ .Branch }}-{{ checksum "shard.yml" }}
+    paths:
+      - ./shards-cache
+
+  make_libsass: &make_libsass
+    name: Make libsass
+    command: |
+      apt update; apt install -y curl
+      make dep
+
+jobs:
+  test:
+    docker:
+      # Use crystallang/crystal:latest or specific crystallang/crystal:VERSION
+      - image: crystallang/crystal:latest
+        environment:
+          SHARDS_CACHE_PATH: ./shards-cache
+    steps:
+      - run: crystal --version
+
+      - checkout
+
+      - restore_cache: *restore_libsass_cache
+      - run: *make_libsass
+      - save_cache: *save_libsass_cache
+
+      - run: make spec
+
+      - run: crystal tool format --check spec src
+
+  test-on-nightly:
+    docker:
+      - image: crystallang/crystal:nightly
+        environment:
+          SHARDS_CACHE_PATH: ./shards-cache
+    steps:
+      - run: crystal --version
+
+      - checkout
+
+      - restore_cache: *restore_libsass_cache
+      - run: *make_libsass
+
+      - run: make spec
+
+      - run: crystal tool format --check spec src
+
+workflows:
+  version: 2
+  # Run tests on every single commit
+  ci:
+    jobs:
+      - test
+  # Run tests every night using crystal nightly
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 2 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - test-on-nightly

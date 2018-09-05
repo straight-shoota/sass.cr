@@ -4,7 +4,7 @@ BUILD           ?= shared
 
 dep: $(LOCAL_LD_PATH)/lib
 
-$(LOCAL_LD_PATH)/lib: clean-dynlib libsass-$(LIBSASS_VERSION)/lib
+$(LOCAL_LD_PATH)/lib: libsass-$(LIBSASS_VERSION)/lib
 	BUILD="$(BUILD)" PREFIX="$(LOCAL_LD_PATH)" make -C "libsass-$(LIBSASS_VERSION)" install
 
 install-libsass: libsass-$(LIBSASS_VERSION)/lib
