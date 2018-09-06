@@ -1,17 +1,6 @@
 version: 2
 
 dry:
-  restore_libsass_cache: &restore_libsass_cache
-    keys:
-      - libsass-cache-v1-{{ .Branch }}-{{ checksum "Makefile" }}
-      - libsass-cache-v1-{{ .Branch }}
-      - libsass-cache-v1
-
-  save_libsass_cache: &save_libsass_cache
-    key: libsass-cache-v1-{{ .Branch }}-{{ checksum "Makefile" }}
-    paths:
-      - ./dynlib
-
   restore_shards_cache: &restore_shards_cache
     # Use {{ checksum "shard.yml" }} if developing a shard instead of an app
     keys:
@@ -25,12 +14,6 @@ dry:
     paths:
       - ./shards-cache
 
-  make_libsass: &make_libsass
-    name: Make libsass
-    command: |
-      apt update; apt install -y curl
-      make dep
-
 jobs:
   test:
     docker:
@@ -43,11 +26,9 @@ jobs:
 
       - checkout
 
-      - restore_cache: *restore_libsass_cache
-      - run: *make_libsass
-      - save_cache: *save_libsass_cache
+      - run: apt update && apt install -y libsass-dev 
 
-      - run: make spec
+      - run: crystal spec
 
       - run: crystal tool format --check spec src
 
@@ -61,10 +42,9 @@ jobs:
 
       - checkout
 
-      - restore_cache: *restore_libsass_cache
-      - run: *make_libsass
+      - run: apt update && apt install -y libsass-dev
 
-      - run: make spec
+      - run: crystal spec
 
       - run: crystal tool format --check spec src
 
