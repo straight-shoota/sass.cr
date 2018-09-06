@@ -19,8 +19,11 @@ dependencies:
     github: straight-shoota/sass.cr
 ```
 
-### Building `libsass`
-There is currently no binary distribution of `libsass`, so you need to build it yourself (see [Building instructions for `libsass`](https://github.com/sass/libsass/blob/master/docs/build.md)).
+### Installing `libsass`
+
+This shard requires the `libsass` library. It is available in many package managers as `libsass-dev` or `libsass`.
+
+If you can't find a binary distribution of `libsass`, you need to build it yourself (see [Building instructions for `libsass`](https://github.com/sass/libsass/blob/master/docs/build.md)).
 
 The included [Makefile](https://github.com/straight-shoota/sass.cr/blob/master/Makefile) contains a target `install-libsass` to install `libsass` in a global path (usually `/usr/local/lib`).
 You can also run `make dep` to install `libsass` in a local path specified by `$LOCAL_LD_PATH` (by default this is `./dynlib`).

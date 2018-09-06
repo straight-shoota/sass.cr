@@ -97,9 +97,11 @@
   sass:
     github: straight-shoota/sass.cr</code></pre>
 
-<h3>Building <code>libsass</code></h3>
+<h3>Installing <code>libsass</code></h3>
 
-<p>There is currently no binary distribution of <code>libsass</code>, so you need to build it yourself (see <a href="https://github.com/sass/libsass/blob/master/docs/build.md" target="_blank">Building instructions for <code>libsass</code></a>).</p>
+<p>This shard requires the <code>libsass</code> library. It is available in many package managers as <code>libsass-dev</code> or <code>libsass</code>.</p>
+
+<p>If you can't find a binary distribution of <code>libsass</code>, you need to build it yourself (see <a href="https://github.com/sass/libsass/blob/master/docs/build.md" target="_blank">Building instructions for <code>libsass</code></a>).</p>
 
 <p>The included <a href="https://github.com/straight-shoota/sass.cr/blob/master/Makefile" target="_blank">Makefile</a> contains a target <code>install-libsass</code> to install <code>libsass</code> in a global path (usually <code>/usr/local/lib</code>).
 You can also run <code>make dep</code> to install <code>libsass</code> in a local path specified by <code>$LOCAL_LD_PATH</code> (by default this is <code>./dynlib</code>).</p>
