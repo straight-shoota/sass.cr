@@ -18,14 +18,14 @@ libsass-$(LIBSASS_VERSION):
 	curl -L "https://github.com/sass/libsass/archive/$(LIBSASS_VERSION).tar.gz" | tar -xz
 
 .PHONY: spec
-spec: dep
+spec:
 	LIBRARY_PATH="$(LOCAL_LD_PATH)/lib" LD_LIBRARY_PATH="$(LOCAL_LD_PATH)/lib" crystal spec
 
-clean: clean-dynlib
+clean: clean-dep
 	rm -rf libsass-$(LIBSASS_VERSION)
 
-clean-dynlib:
+clean-dep:
 	rm -rf $(LOCAL_LD_PATH)
 
-clean-all: clean-dynlib
+clean-all: clean-dep
 	rm -rf libsass-*
