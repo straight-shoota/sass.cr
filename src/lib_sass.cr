@@ -173,15 +173,15 @@ lib LibSass
 
   @[Flags]
   enum Sass2ScssOption
-    PRETTIFY_1,
-    PRETTIFY_2,
-    PRETTIFY_3,
+    PRETTIFY_1
+    PRETTIFY_2
+    PRETTIFY_3
 
-    FILL1,
-    FILL2,
+    FILL1
+    FILL2
 
-    KEEP_COMMENT,
-    STRIP_COMMENT,
+    KEEP_COMMENT
+    STRIP_COMMENT
     CONVERT_COMMENT
   end
 
