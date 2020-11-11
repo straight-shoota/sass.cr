@@ -1,11 +1,7 @@
-.message, .error, .success {
+.message, .error {
   border: 1px solid #ccc;
 }
 
 .error {
   border-color: red;
-}
-
-.success {
-  border-color: green;
 }
