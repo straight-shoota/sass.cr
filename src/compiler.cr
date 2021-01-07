@@ -4,7 +4,7 @@ require "./sass"
 #
 # Usage examples:
 #
-# ```crystal
+# ```
 # require "sass"
 #
 # # Compile a Sass/SCSS file:
