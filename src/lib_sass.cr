@@ -123,10 +123,10 @@ lib LibSass
   fun option_get_is_indented_syntax_src = sass_option_get_is_indented_syntax_src(opt : SassOptions*) : Bool
   fun option_get_indent = sass_option_get_indent(opt : SassOptions*) : Char*
   fun option_get_linefeed = sass_option_get_linefeed(opt : SassOptions*) : Char*
-  fun option_get_input_path = sass_option_get_input_path(opt : SassOptions*) : Char*?
-  fun option_get_output_path = sass_option_get_output_path(opt : SassOptions*) : Char*?
-  fun option_get_source_map_file = sass_option_get_source_map_file(opt : SassOptions*) : Char*?
-  fun option_get_source_map_root = sass_option_get_source_map_root(opt : SassOptions*) : Char*?
+  fun option_get_input_path = sass_option_get_input_path(opt : SassOptions*) : Char*
+  fun option_get_output_path = sass_option_get_output_path(opt : SassOptions*) : Char*
+  fun option_get_source_map_file = sass_option_get_source_map_file(opt : SassOptions*) : Char*
+  fun option_get_source_map_root = sass_option_get_source_map_root(opt : SassOptions*) : Char*
   fun option_get_c_functions = sass_option_get_c_functions(opt : SassOptions*) : SassFunctionList
   fun option_get_importer = sass_option_get_importer(opt : SassOptions*) : SassImportCallback
 
