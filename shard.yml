@@ -1,6 +1,6 @@
 name: sass
-version: 0.5.0
-crystal: 0.28.0
+version: 0.6.0
+crystal: ">= 0.28.0"
 
 authors:
 - Johannes Müller <straightshoota@gmail.com>
@@ -10,7 +10,7 @@ description: |
 
 license: MIT
 homepage: https://straight-shoota.github.io/sass.cr/
-documentation: https://straight-shoota.github.io/sass.cr/api/0.5.0/
+documentation: https://straight-shoota.github.io/sass.cr/api/latest/
 
 libraries:
   libsass: "*"

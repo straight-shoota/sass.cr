@@ -1,3 +1,9 @@
+## 0.6.0 (2021-02-09)
+
+* Improves compatibility with libsass 3.6
+* Adds compatibility with Crystal 0.36.0
+* Deprecates `Sass::VERSION` constant
+
 ## 0.5.0 (2019-04-13)
 
 * Adds CI on circle-ci.
