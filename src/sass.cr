@@ -1,4 +1,5 @@
 class Sass
+  @[Deprecated]
   VERSION = "0.5.0"
 
   alias OutputStyle = LibSass::SassOutputStyle
