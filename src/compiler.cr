@@ -109,7 +109,7 @@ class Sass
   #
   # For available options see class description.
   def compile(string)
-    Compiler.compile(string, **options)
+    Sass.compile(string, **options)
   end
 
   # :nodoc:
@@ -141,7 +141,7 @@ class Sass
   #
   # For available options see class description.
   def compile_file(file)
-    Compiler.compile_file(file, **options)
+    Sass.compile_file(file, **options)
   end
 
   # :nodoc:
