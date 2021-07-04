@@ -8,20 +8,6 @@ class Sass
   def self.libsass_version
     String.new(LibSass.libsass_version)
   end
-
-  # Compiles a Sass/SCSS string and returns CSS as `String`.
-  #
-  # For available options see `Sass::Options`.
-  def self.compile(string, **options)
-    Compiler.compile(string, **options)
-  end
-
-  # Compiles a Sass/SCSS file and returns CSS as `String`.
-  #
-  # For available options see `Sass::Options`.
-  def self.compile_file(file, **options)
-    Compiler.compile_file(file, **options)
-  end
 end
 
 require "./lib_sass"

@@ -14,6 +14,12 @@ private SIMPLE_CSS    = <<-'CSS'
 describe "Sass" do
   describe "#compile" do
     it "compiles simple scss" do
+      Sass.new.compile(%(body { div { color: red }})).should eq "body div {\n  color: red; }\n"
+    end
+  end
+
+  describe ".compile" do
+    it "compiles simple scss" do
       Sass.compile(%(body { div { color: red }})).should eq "body div {\n  color: red; }\n"
     end
 
@@ -52,6 +58,12 @@ describe "Sass" do
   end
 
   describe "#compile_file" do
+    it "compiles simple scss file" do
+      Sass.new.compile_file(File.join(INCLUDES_PATH, "_simple.scss")).should eq SIMPLE_CSS
+    end
+  end
+
+  describe ".compile_file" do
     it "compiles simple scss file" do
       Sass.compile_file(File.join(INCLUDES_PATH, "_simple.scss")).should eq SIMPLE_CSS
     end
