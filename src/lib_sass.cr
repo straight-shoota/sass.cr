@@ -1,5 +1,5 @@
 # Bindings to `libsass`
-@[Link("sass")]
+@[Link("sass", pkg_config: "libsass")]
 lib LibSass
   alias Char = LibC::Char
 
